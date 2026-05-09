@@ -52,11 +52,20 @@ Use the Edit tool to update the structure document:
 - Recalculate estimated line counts if phases were split/merged
 - Update the "What We're NOT Doing" section if scope changed
 
+### Step 3b: Refresh sibling HTML if it exists
+
+After updating the markdown, check whether a sibling `.html` file exists at the same path. Apply the rule from `skills/qrspi/HTML-OUTPUT.md`:
+
+- **Sibling `.html` exists**: Refresh the phase overview table AND the SVG timeline — both must reflect the new ordering / counts. Add, remove, or split per-phase slides as needed. Update the "What We're NOT Doing" slide if scope changed. Append an "Updated" `<aside class="meta">` to the title slide.
+- **No sibling, no flag**: Skip — markdown stays canonical.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-structure-outline`'s Step 4b.
+
 ### Step 4: Present Changes
 
 ```
 Updated the structure outline:
 - [What changed]
+[If HTML was refreshed: HTML deck refreshed at `thoughts/shared/structure/...html`]
 
 Phase sequence is now:
 1. [Phase 1 summary] — ~[lines] lines

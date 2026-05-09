@@ -26,6 +26,7 @@ When this skill is triggered:
 
 1. **If a file path was provided** (e.g., `thoughts/shared/questions/YYYY-MM-DD-ENG-XXXX-questions.md`):
    - Read it fully using the Read tool (no limit/offset).
+   - Scan the args for the literal token `--output=html` and remember it for Step 5b.
    - Begin the research process immediately.
 
 2. **If no input was provided**, respond with:
@@ -34,6 +35,8 @@ When this skill is triggered:
 
    Please provide the path to the questions document from the Question phase
    (e.g., `thoughts/shared/questions/YYYY-MM-DD-ENG-XXXX-questions.md`).
+
+   Append `--output=html` to also emit a reveal.js slide deck alongside the markdown.
    ```
    Then wait for input.
 
@@ -136,11 +139,27 @@ After scope confirmation, write to `thoughts/shared/research/YYYY-MM-DD-[ticket-
 - [Any thoughts/ documents found by thoughts-locator]
 ````
 
+### Step 5b: Emit HTML if requested
+
+If the input args contained `--output=html`, also write a sibling deck at `thoughts/shared/research/YYYY-MM-DD-[ticket-id]-research.html` following the conventions in `skills/qrspi/HTML-OUTPUT.md`.
+
+Phase-specific slide structure for this skill:
+- **Title slide**: ticket, scope, date, link to markdown source.
+- **TL;DR slide**: 3–5 bullets answering the questions in plain language.
+- **File map**: SVG diagram OR a `grid-2`/`grid-3` of cards grouping files by purpose (implementation, tests, config, types) with `path:line` references.
+- **Per-question findings** (one slide per question or merged where related): bullet findings with `file:line` cites; annotate code blocks via `<mark>`/margin notes.
+- **Data flow**: SVG showing how data moves through the relevant components, numbered steps with directional arrows.
+- **Existing patterns**: `grid-2`/`grid-3` comparison cards (name, file:line, brief description, current usage).
+- **Discrepancies**: table of "ticket assumes / codebase actually does" with `warn`/`bad` badges.
+
+If `--output=html` is not present, skip this step. Markdown remains the default.
+
 ### Step 6: Present and Iterate
 
 ```
 Research report written to:
 `thoughts/shared/research/YYYY-MM-DD-[ticket-id]-research.md`
+[If HTML was emitted: `thoughts/shared/research/YYYY-MM-DD-[ticket-id]-research.html`]
 
 Please review. Does this provide a complete and accurate picture of the current system?
 

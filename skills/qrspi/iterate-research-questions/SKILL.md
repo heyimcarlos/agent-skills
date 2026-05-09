@@ -42,6 +42,14 @@ Watch for intent contamination in any new or reframed questions — apply the sa
 
 Use the Edit tool to surgically update the questions document. Renumber questions if removals create gaps.
 
+### Step 3b: Refresh sibling HTML if it exists
+
+After updating the markdown, check whether a sibling `.html` file exists at the same path. Apply the rule from `skills/qrspi/HTML-OUTPUT.md`:
+
+- **Sibling `.html` exists**: Refresh it to match the new markdown. Prefer surgical Edit on the affected slides (added/removed/reframed questions). Rewrite the full file only if changes are widespread. Append `<aside class="meta">Updated YYYY-MM-DD: [reason]</aside>` to the title slide.
+- **No sibling, no flag**: Skip — markdown stays canonical.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-research-questions`'s Step 5a.
+
 ### Step 4: Present the Updated Questions
 
 Show the user what changed and the current state:
@@ -49,6 +57,7 @@ Show the user what changed and the current state:
 ```
 Updated the questions document:
 `thoughts/shared/questions/YYYY-MM-DD-[ticket-id]-questions.md`
+[If HTML was refreshed: `thoughts/shared/questions/YYYY-MM-DD-[ticket-id]-questions.html`]
 
 Changes:
 - [Added/removed/reframed Q#X: brief description]

@@ -48,6 +48,8 @@ Each stage is its own skill, with an `iterate-*` sibling for surgical adjustment
 
 QRSPI skills set `disable-model-invocation: true` — the human invokes each phase deliberately rather than letting the model auto-trigger them.
 
+Every doc-producing QRSPI skill (all of the above except `create-worktree`) accepts an optional `--output=html` flag. When present, the skill emits a reveal.js slide deck alongside the canonical markdown — color, SVG diagrams, annotated code, comparison tables. Iterate skills detect the sibling `.html` and refresh both. See [`skills/qrspi/HTML-OUTPUT.md`](./skills/qrspi/HTML-OUTPUT.md) for the conventions and per-phase slide structures.
+
 ## Reference
 
 ### Engineering

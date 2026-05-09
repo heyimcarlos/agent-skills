@@ -15,12 +15,14 @@ You are defining the structural execution strategy for an approved design. Your 
 
 When this skill is triggered:
 
-1. **If a design file path was provided**: Read it fully and begin structuring.
+1. **If a design file path was provided**: Read it fully. Scan the args for the literal token `--output=html` and remember it for Step 4b. Begin structuring.
 2. **If no input was provided**, respond with:
    ```
    I'll create a structural outline from the approved design.
 
    Please provide the path to the approved design document (e.g., `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.md`).
+
+   Append `--output=html` to also emit a reveal.js slide deck alongside the markdown.
    ```
    Then wait for input.
 
@@ -118,11 +120,25 @@ Write to `thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.md`:
 - Research: `thoughts/shared/research/[filename]`
 ````
 
+### Step 4b: Emit HTML if requested
+
+If the input args contained `--output=html`, also write a sibling deck at `thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.html` following the conventions in `skills/qrspi/HTML-OUTPUT.md`.
+
+Phase-specific slide structure for this skill:
+- **Title slide**: feature, design link, date, link to markdown source.
+- **What we're NOT doing**: high-contrast slide listing exclusions with rationale (use `bad`/`warn` badges to make exclusions visually obvious).
+- **Phase overview**: the same table as the markdown plus an inline SVG timeline — horizontal lanes per phase, each labeled with name/line-estimate, ending in a checkpoint diamond.
+- **Per-phase slides**: one slide each. Use a `card` block per phase with goal / files / verification (automated + manual side-by-side via `grid-2`) / boundary. `info` badge for tracer-bullet phases, `ok` for verified.
+- **Testing strategy**: final slide with unit/integration/manual blocks side-by-side.
+
+If `--output=html` is not present, skip this step. Markdown remains the default.
+
 ### Step 5: Present for Review
 
 ```
 Structure outline written to:
 `thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.md`
+[If HTML was emitted: `thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.html`]
 
 [Total phases]: [N] phases, ~[total lines] estimated lines of change
 

@@ -15,12 +15,14 @@ You are a Staff Software Engineer leading a technical design discussion. Your jo
 
 When this skill is triggered:
 
-1. **If a research file path was provided**: Read it fully, then locate and read the original ticket from the questions document's `**Ticket**` reference. Begin the design process.
+1. **If a research file path was provided**: Read it fully, then locate and read the original ticket from the questions document's `**Ticket**` reference. Scan the args for the literal token `--output=html` and remember it for Step 6b. Begin the design process.
 2. **If no input was provided**, respond with:
    ```
    I'll facilitate a design discussion based on the research findings.
 
    Please provide the path to the research document (e.g., `thoughts/shared/research/YYYY-MM-DD-[ticket-id]-research.md`).
+
+   Append `--output=html` to also emit a reveal.js slide deck alongside the markdown.
    ```
    Then wait for input.
 
@@ -146,11 +148,27 @@ Write to `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.md`:
 - Questions: `thoughts/shared/questions/[filename]`
 ````
 
+### Step 6b: Emit HTML if requested
+
+If the input args contained `--output=html`, also write a sibling deck at `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.html` following the conventions in `skills/qrspi/HTML-OUTPUT.md`.
+
+Phase-specific slide structure for this skill:
+- **Title slide**: feature, ticket, date, link to markdown source.
+- **Current vs. desired**: `grid-2` cards or a side-by-side table comparing today's behavior with the ticket's target.
+- **Patterns in play**: comparison grid of patterns (file:line, description), with the chosen one highlighted via `badge ok`.
+- **Per-option slide**: one slide per design option with `pros / cons / risk` columns and a recommendation badge (`ok` for recommended, `warn` for viable, `bad` for ruled out).
+- **Open questions**: list with `warn` badges; each question gets a clear ID for later resolution.
+- **Recommendation**: explicit slide with the recommended approach reasoning — but the human still decides.
+- **Approved approach**: leave blank/placeholder until iteration converges (the iterate skill fills this in).
+
+If `--output=html` is not present, skip this step. Markdown remains the default.
+
 ### Step 7: Present for Discussion
 
 ```
 I've written the design discussion to:
 `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.md`
+[If HTML was emitted: `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.html`]
 
 Key decisions needed:
 1. [Most important decision]

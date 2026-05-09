@@ -15,12 +15,14 @@ You are creating the final, tactical implementation plan from an approved struct
 
 When this skill is triggered:
 
-1. **If a structure file path was provided**: Read it fully, then read the design and research documents referenced in it. Begin planning.
+1. **If a structure file path was provided**: Read it fully, then read the design and research documents referenced in it. Scan the args for the literal token `--output=html` and remember it for Step 4b. Begin planning.
 2. **If no input was provided**, respond with:
    ```
    I'll create an implementation plan from the approved structure outline.
 
    Please provide the path to the structure document (e.g., `thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.md`).
+
+   Append `--output=html` to also emit a reveal.js slide deck alongside the markdown.
    ```
    Then wait for input.
 
@@ -122,11 +124,30 @@ Before presenting, check:
 
 If any check fails, fix the plan or flag the issue.
 
+### Step 4b: Emit HTML if requested
+
+If the input args contained `--output=html`, also write a sibling deck at `thoughts/shared/plans/YYYY-MM-DD-[ticket-id]-plan.html` following the conventions in `skills/qrspi/HTML-OUTPUT.md`.
+
+Phase-specific slide structure for this skill:
+- **Title slide**: feature, structure link, date, link to markdown source. Reserve space for an "Updated" banner that iterate-plan will append.
+- **Phase navigation**: small SVG (or list of anchored links) jumping to each phase slide.
+- **Per-step slides**: one slide per step (or one phase per slide if steps are tiny). Each step shows:
+  - File path in a copy-friendly `<code>` block
+  - The "Do" instructions
+  - Code snippets in syntax-highlighted `<pre><code class="language-...">`
+  - **Automated** and **Manual** verification cards via `grid-2`
+  - Status checkbox `<input type="checkbox" disabled>` matched to the markdown's `- [ ]`/`- [x]` state
+- **Phase checkpoint slides**: one per phase, with both verification commands rendered as runnable `<code>` blocks and a clear "pauses for human confirmation" callout.
+- **Final verification**: last slide with the comprehensive command and manual scenarios.
+
+If `--output=html` is not present, skip this step. Markdown remains the default.
+
 ### Step 5: Present for Approval
 
 ```
 Implementation plan written to:
 `thoughts/shared/plans/YYYY-MM-DD-[ticket-id]-plan.md`
+[If HTML was emitted: `thoughts/shared/plans/YYYY-MM-DD-[ticket-id]-plan.html`]
 
 Summary:
 - [N] phases, [M] total steps

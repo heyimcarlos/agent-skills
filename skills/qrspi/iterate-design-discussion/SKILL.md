@@ -37,6 +37,14 @@ Use the Edit tool to surgically update `thoughts/shared/design/`:
 - Move answered questions from `## Open Questions` to `## Resolved Decisions`
 - If a new constraint changes the design significantly, update the approach description and flag what changed
 
+### Step 2b: Refresh sibling HTML if it exists
+
+After updating the markdown, check whether a sibling `.html` file exists at the same path. Apply the rule from `skills/qrspi/HTML-OUTPUT.md`:
+
+- **Sibling `.html` exists**: Refresh affected slides. Specifically: move rejected option slides into a "Resolved Decisions" section (don't delete them), promote the chosen option to a clearly-marked "Approved" slide with `badge ok`, move resolved questions out of the "Open Questions" slide, and update the recommendation. Append an "Updated" `<aside class="meta">` to the title slide.
+- **No sibling, no flag**: Skip — markdown stays canonical.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-design-discussion`'s Step 6b.
+
 ### Step 3: Validate Completeness
 
 Before declaring the design done, check:
@@ -54,6 +62,7 @@ If consensus is reached:
 ```
 Design approved. The document reflects the agreed approach:
 `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.md`
+[If HTML was refreshed: `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.html`]
 
 Key decisions:
 - [Decision 1]

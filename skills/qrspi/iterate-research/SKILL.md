@@ -45,12 +45,21 @@ Use the Edit tool to update the research document. Do NOT rewrite the entire doc
 - Update the `## Discrepancies` section if new reality-vs-assumption gaps were found.
 - Add any new file references to the `## Affected Areas & File Map` section.
 
+### Step 3b: Refresh sibling HTML if it exists
+
+After updating the markdown, check whether a sibling `.html` file exists at the same path. Apply the rule from `skills/qrspi/HTML-OUTPUT.md`:
+
+- **Sibling `.html` exists**: Refresh affected slides — file map, per-question findings, data flow diagrams, discrepancies table — to match the new markdown content. Prefer surgical Edit; rewrite the full `.html` only if many slides changed. Append an "Updated" `<aside class="meta">` to the title slide.
+- **No sibling, no flag**: Skip — markdown stays canonical.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-research`'s Step 5b.
+
 ### Step 4: Present Changes
 
 ```
 Updated the research document with:
 - [What was added/changed]
 - [New files discovered: file:line]
+[If HTML was refreshed: HTML deck refreshed at `thoughts/shared/research/...html`]
 
 Are there other areas that need deeper investigation, or is the research complete?
 

@@ -34,6 +34,7 @@ When this skill is triggered:
 1. **If a ticket input was provided** (a file path, GitHub issue URL, Linear ticket ID, or inline text):
    - Normalize the input (see Step 1 below).
    - Read the ticket fully using the Read tool (no limit/offset).
+   - Scan the args for the literal token `--output=html` and remember it for Step 5b.
    - Begin the question generation process immediately.
 
 2. **If no input was provided**, respond with:
@@ -45,6 +46,8 @@ When this skill is triggered:
    - A GitHub issue URL (e.g., `owner/repo#123`)
    - A Linear ticket ID (e.g., `ENG-1234`)
    - A description of the feature or bug inline
+
+   Append `--output=html` to also emit a reveal.js slide deck alongside the markdown.
    ```
    Then wait for input.
 
@@ -118,11 +121,25 @@ Write to `thoughts/shared/questions/YYYY-MM-DD-[ticket-id]-questions.md`:
 ...
 ```
 
-### Step 5: Present for Review
+### Step 5a: Emit HTML if requested
+
+If the input args contained `--output=html`, also write a sibling deck at `thoughts/shared/questions/YYYY-MM-DD-[ticket-id]-questions.html` following the conventions in `skills/qrspi/HTML-OUTPUT.md` (reveal.js via CDN, rich slides, color-coded badges).
+
+Phase-specific slide structure for this skill:
+- **Title slide**: ticket title, source, date, status, link back to the markdown source.
+- **Context summary**: the objective context paragraph as a single readable slide.
+- **Question map**: SVG or grid grouping questions by category (data flow, boundaries, components, constraints) with counts.
+- **Per-question slides** (or per-category if many): numbered with `info` badges; use vertical sub-slides for clarifications.
+- **Coverage check**: table mapping ticket-mentioned areas → questions covering them so gaps are visible.
+
+If `--output=html` is not present, skip this step. Markdown remains the default.
+
+### Step 5b: Present for Review
 
 ```
 I've generated research questions at:
 `thoughts/shared/questions/YYYY-MM-DD-[ticket-id]-questions.md`
+[If HTML was emitted: `thoughts/shared/questions/YYYY-MM-DD-[ticket-id]-questions.html`]
 
 Please review the questions. You can:
 - Ask me to add, remove, or reframe questions
