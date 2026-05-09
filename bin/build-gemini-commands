@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# Translate Claude command markdown files (frontmatter + body) into
+# Gemini CLI TOML command files.
+#
+# Reads:  core/commands/*.md and qrspi/commands/*.md
+# Writes: .gemini/commands/<plugin>/<name>.toml
+#
+# Frontmatter `description:` becomes TOML description.
+# The body becomes the TOML prompt (multi-line string).
+
+from __future__ import annotations
+
+import re
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+SOURCES = [
+    ("core", REPO / "core" / "commands"),
+    ("qrspi", REPO / "qrspi" / "commands"),
+]
+OUT_BASE = REPO / ".gemini" / "commands"
+
+FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
+
+
+def parse_frontmatter(text: str) -> tuple[dict, str]:
+    m = FRONTMATTER_RE.match(text)
+    if not m:
+        return {}, text
+    raw = m.group(1)
+    body = text[m.end():]
+    fm: dict[str, str] = {}
+    for line in raw.splitlines():
+        if ":" in line:
+            k, v = line.split(":", 1)
+            fm[k.strip()] = v.strip()
+    return fm, body
+
+
+def to_toml(description: str, prompt: str) -> str:
+    description = description.replace('"', '\\"')
+    if '"""' in prompt:
+        prompt = prompt.replace('"""', '\\"\\"\\"')
+    return f'description = "{description}"\n\nprompt = """\n{prompt.strip()}\n"""\n'
+
+
+def main() -> None:
+    written = 0
+    for plugin, src_dir in SOURCES:
+        out_dir = OUT_BASE / plugin
+        out_dir.mkdir(parents=True, exist_ok=True)
+        for md in sorted(src_dir.glob("*.md")):
+            fm, body = parse_frontmatter(md.read_text())
+            description = fm.get("description", md.stem.replace("_", " "))
+            toml_path = out_dir / (md.stem + ".toml")
+            toml_path.write_text(to_toml(description, body))
+            written += 1
+    print(f"wrote {written} gemini command files under {OUT_BASE}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,66 @@
+description = "Refine research questions based on user answers and surface follow-up ambiguities"
+
+prompt = """
+# Iterate Research Questions
+
+You are refining the research questions document based on the user's answers. Your goal is to produce a complete, answered questions document ready to hand off to the Research phase.
+
+## Initial Response
+
+When this command is invoked:
+
+1. **If a file path was provided**: Read it FULLY and process immediately.
+2. **If the user provided answers inline** (no file path): Find the most recent `thoughts/shared/questions/` document, read it, and apply the answers.
+3. **If neither**: Ask for the path to the questions document.
+
+## Process
+
+### Step 1: Read and Understand
+
+- Read the existing `thoughts/shared/questions/` document completely.
+- Identify which questions have been answered and which are still open.
+
+### Step 2: Process Answers
+
+For each answer the user provides:
+- Record the answer under the corresponding question in the `## User Answers` section.
+- If an answer reveals a new ambiguity or missing piece, add a follow-up question under a new `### Follow-up Questions` subsection.
+- If an answer narrows scope significantly, note which original questions are now irrelevant and mark them `[N/A — resolved by answer to Q#X]`.
+
+### Step 3: Update the Document
+
+Use the Edit tool to surgically update the questions document:
+- Fill in the `## User Answers` section with the user's responses, keyed to question numbers.
+- Add any follow-up questions.
+- Update `**Status**` in the header:
+  - `awaiting-answers` — initial state
+  - `partially-answered` — some questions answered, follow-ups pending
+  - `ready-for-research` — all questions answered, no open ambiguities
+
+### Step 4: Present Status
+
+If all questions are answered:
+```
+All questions are answered. The document is ready for research:
+`thoughts/shared/questions/YYYY-MM-DD-[ticket-id]-questions.md`
+
+Next step: `/qrspi:create_research [path-to-questions-file]`
+```
+
+If follow-up questions remain:
+```
+I've recorded your answers and identified [N] follow-up questions:
+
+1. [Follow-up question]
+2. [Follow-up question]
+
+Please answer these and I'll finalize the document.
+```
+
+## Guidelines
+
+- Do not rewrite answered questions — preserve the originals and add answers alongside them.
+- Do not add questions about implementation approach — that belongs in Design.
+- If the user's answers contradict each other, flag the contradiction explicitly rather than silently choosing one.
+- Keep the document self-contained: a reader should understand the full scope from this file alone, without needing the original ticket.
+"""

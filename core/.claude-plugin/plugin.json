@@ -1,0 +1,14 @@
+{
+  "name": "core",
+  "description": "Core skills, research subagents, and workflow utility commands.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Carlos de la Cruz"
+  },
+  "homepage": "https://github.com/heyimcarlos/agent-skills",
+  "repository": "https://github.com/heyimcarlos/agent-skills",
+  "license": "MIT",
+  "skills": "./skills",
+  "agents": "./agents",
+  "commands": "./commands"
+}

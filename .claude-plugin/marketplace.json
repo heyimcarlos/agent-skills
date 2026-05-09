@@ -1,0 +1,29 @@
+{
+  "name": "agent-skills",
+  "owner": {
+    "name": "Carlos de la Cruz"
+  },
+  "metadata": {
+    "description": "Carlos's agent skills, subagents, and command workflows for Claude Code, Gemini CLI, and OpenAI Codex CLI."
+  },
+  "plugins": [
+    {
+      "name": "core",
+      "source": {
+        "source": "github",
+        "repo": "heyimcarlos/agent-skills",
+        "path": "core"
+      },
+      "description": "Core skills (ralph, improve-claude-md, research helpers), 9 research subagents, and workflow utility commands (commit, describe_pr, debug, linear, worktree, handoff, founder_mode, validate_plan, implement_plan)."
+    },
+    {
+      "name": "qrspi",
+      "source": {
+        "source": "github",
+        "repo": "heyimcarlos/agent-skills",
+        "path": "qrspi"
+      },
+      "description": "QRSPI workflow: Question → Research → Spec (design discussion + structure outline) → Plan → Implement. Slash commands for each phase plus iterate variants."
+    }
+  ]
+}

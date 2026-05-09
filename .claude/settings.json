@@ -1,0 +1,52 @@
+{
+  "env": {
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+  },
+  "model": "claude-opus-4-7",
+  "statusLine": {
+    "type": "command",
+    "command": "$CLAUDE_CONFIG_DIR/statusline.sh"
+  },
+  "enabledPlugins": {
+    "core@agent-skills": true,
+    "qrspi@agent-skills": true,
+    "skill-creator@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "codex@openai-codex": true,
+    "cli-anything@cli-anything": true,
+    "autoresearch@autoresearch": true
+  },
+  "extraKnownMarketplaces": {
+    "agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "heyimcarlos/agent-skills"
+      }
+    },
+    "autoresearch": {
+      "source": {
+        "source": "github",
+        "repo": "uditgoenka/autoresearch"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "cli-anything": {
+      "source": {
+        "source": "github",
+        "repo": "HKUDS/CLI-Anything"
+      }
+    }
+  },
+  "effortLevel": "xhigh",
+  "skipDangerousModePermissionPrompt": true
+}

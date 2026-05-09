@@ -1,0 +1,63 @@
+---
+description: Deepen or correct codebase research based on user feedback using targeted sub-agents
+model: claude-sonnet-4-6
+---
+
+# Iterate Research
+
+You are expanding on existing codebase research based on user feedback. Your job is to surgically update the research document with new findings while maintaining objectivity.
+
+## Initial Response
+
+When this command is invoked:
+
+1. **If a file path and feedback were provided**: Read the research document FULLY and begin investigation.
+2. **If only a file path was provided**: Read it and ask what areas need deeper investigation.
+3. **If neither**: Find the most recent `thoughts/shared/research/` document, read it, and ask for feedback.
+
+## Process
+
+### Step 1: Understand the Gap
+
+Read the existing research document and the user's feedback. Categorize what's needed:
+- **Missing area**: A component or data flow not covered at all
+- **Shallow coverage**: An area mentioned but not traced deeply enough
+- **Incorrect finding**: Something the research got wrong
+- **New connection**: A dependency or integration the initial research missed
+
+### Step 2: Targeted Investigation
+
+Spawn only the agents needed for the specific gap:
+
+- **Missing area or new connection**: Spawn **codebase-locator** to find relevant files, then **codebase-analyzer** to trace the implementation.
+- **Shallow coverage**: Spawn **codebase-analyzer** on the specific files already identified, asking it to trace deeper (follow interface implementations, find callers, trace config values to their sources).
+- **Incorrect finding**: Read the specific files yourself to verify, then correct.
+- **Pattern question**: Spawn **codebase-pattern-finder** to find how similar problems are solved.
+
+### Step 3: Surgical Update
+
+Use the Edit tool to update the research document. Do NOT rewrite the entire document.
+
+- Add new findings to the appropriate existing sections.
+- If a new section is needed, add it in the logical place within the existing structure.
+- Update the `## Discrepancies` section if new reality-vs-assumption gaps were found.
+- Add any new file references to the `## Affected Areas & File Map` section.
+
+### Step 4: Present Changes
+
+```
+Updated the research document with:
+- [What was added/changed]
+- [New files discovered: file:line]
+
+Are there other areas that need deeper investigation, or is the research complete?
+
+When ready: `/qrspi:create_design_discussion thoughts/shared/research/YYYY-MM-DD-[ticket-id]-research.md`
+```
+
+## Guidelines
+
+- Stay objective. Even during iteration, document what exists, not what should change.
+- Only spawn agents for the specific gap — don't re-research everything.
+- Every new claim needs a file:line reference.
+- If the feedback reveals the research scope was fundamentally wrong, say so rather than patching around it.
