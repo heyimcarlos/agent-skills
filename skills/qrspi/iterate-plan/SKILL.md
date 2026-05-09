@@ -1,5 +1,5 @@
 ---
-name: qrspi:iterate-plan
+name: iterate-plan
 description: Surgically adjust the implementation plan when scope changes or implementation hits a mismatch.
 disable-model-invocation: true
 model: opus

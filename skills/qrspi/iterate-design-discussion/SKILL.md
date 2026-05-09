@@ -1,5 +1,5 @@
 ---
-name: qrspi:iterate-design-discussion
+name: iterate-design-discussion
 description: Refine design options and converge on an architectural decision through collaborative discussion.
 disable-model-invocation: true
 model: opus

@@ -1,5 +1,5 @@
 ---
-name: qrspi:create-worktree
+name: create-worktree
 description: Create an isolated git worktree and launch an implementation session from an approved plan.
 disable-model-invocation: true
 model: opus

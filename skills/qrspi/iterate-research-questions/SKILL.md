@@ -1,5 +1,5 @@
 ---
-name: qrspi:iterate-research-questions
+name: iterate-research-questions
 description: Refine research questions by adding, removing, or reframing them based on user feedback.
 disable-model-invocation: true
 model: opus

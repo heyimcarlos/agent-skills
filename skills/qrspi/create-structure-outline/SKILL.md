@@ -1,5 +1,5 @@
 ---
-name: qrspi:create-structure-outline
+name: create-structure-outline
 description: Translate an approved design into a phased structural outline with vertical slices and verification checkpoints.
 disable-model-invocation: true
 model: opus

@@ -1,5 +1,5 @@
 ---
-name: qrspi:create-research
+name: create-research
 description: Document codebase as-is using parallel sub-agents, guided only by the research questions document.
 disable-model-invocation: true
 model: opus

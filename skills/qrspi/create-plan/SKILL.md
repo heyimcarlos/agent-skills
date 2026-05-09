@@ -1,5 +1,5 @@
 ---
-name: qrspi:create-plan
+name: create-plan
 description: Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria.
 disable-model-invocation: true
 model: opus

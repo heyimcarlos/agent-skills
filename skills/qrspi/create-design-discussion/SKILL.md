@@ -1,5 +1,5 @@
 ---
-name: qrspi:create-design-discussion
+name: create-design-discussion
 description: Synthesize research and ticket into architectural decisions, surfacing options and patterns for human review.
 disable-model-invocation: true
 model: opus

@@ -1,5 +1,5 @@
 ---
-name: qrspi:iterate-research
+name: iterate-research
 description: Deepen or correct codebase research based on user feedback using targeted sub-agents.
 disable-model-invocation: true
 model: opus

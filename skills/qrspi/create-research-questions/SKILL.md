@@ -1,5 +1,5 @@
 ---
-name: qrspi:create-research-questions
+name: create-research-questions
 description: Analyze a ticket to generate targeted research questions before any codebase investigation begins.
 disable-model-invocation: true
 model: opus

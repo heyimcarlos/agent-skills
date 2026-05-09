@@ -1,5 +1,5 @@
 ---
-name: qrspi:iterate-structure-outline
+name: iterate-structure-outline
 description: Adjust phase ordering, boundaries, or verification checkpoints in the structure outline.
 disable-model-invocation: true
 model: opus
