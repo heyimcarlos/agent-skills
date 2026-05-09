@@ -1,0 +1,33 @@
+{
+  "name": "agent-skills",
+  "skills": [
+    "./skills/engineering/ci-commit",
+    "./skills/engineering/ci-describe-pr",
+    "./skills/engineering/commit",
+    "./skills/engineering/create-handoff",
+    "./skills/engineering/debug",
+    "./skills/engineering/describe-pr",
+    "./skills/engineering/describe-pr-nt",
+    "./skills/engineering/founder-mode",
+    "./skills/engineering/implement-plan",
+    "./skills/engineering/linear",
+    "./skills/engineering/local-review",
+    "./skills/engineering/resume-handoff",
+    "./skills/engineering/validate-plan",
+    "./skills/engineering/worktree",
+    "./skills/productivity/improve-claude-md",
+    "./skills/productivity/ralph",
+    "./skills/qrspi/create-research-questions",
+    "./skills/qrspi/create-research",
+    "./skills/qrspi/create-design-discussion",
+    "./skills/qrspi/create-structure-outline",
+    "./skills/qrspi/create-plan",
+    "./skills/qrspi/create-worktree",
+    "./skills/qrspi/iterate-research-questions",
+    "./skills/qrspi/iterate-research",
+    "./skills/qrspi/iterate-design-discussion",
+    "./skills/qrspi/iterate-structure-outline",
+    "./skills/qrspi/iterate-plan"
+  ],
+  "agents": "./agents"
+}
