@@ -1,15 +1,19 @@
-description = "Refine design options and converge on architectural decisions through collaborative discussion"
+---
+name: qrspi:iterate-design-discussion
+description: Refine design options and converge on an architectural decision through collaborative discussion.
+disable-model-invocation: true
+model: opus
+---
 
-prompt = """
 # Iterate Design Discussion
 
 You are refining a technical design through collaborative discussion with the human. Your goal is to narrow options, resolve open questions, and converge on a single approved approach.
 
-## Initial Response
+## Getting Started
 
-When this command is invoked:
+When this skill is triggered:
 
-1. **If a file path and feedback were provided**: Read the design document FULLY and process the feedback.
+1. **If a file path and feedback were provided**: Read the design document fully and process the feedback.
 2. **If only a file path was provided**: Read it and ask what the user wants to discuss or change.
 3. **If neither**: Find the most recent `thoughts/shared/design/` document, read it, and ask for direction.
 
@@ -55,7 +59,7 @@ Key decisions:
 - [Decision 1]
 - [Decision 2]
 
-Next step: `/qrspi:create_structure_outline thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.md`
+Next step: run the create-structure-outline skill.
 ```
 
 If still iterating:
@@ -70,6 +74,5 @@ What's your thinking on these?
 
 - Preserve the discussion history. Don't delete rejected options — move them to `## Resolved Decisions` with the reasoning.
 - If the user's feedback contradicts the research findings, flag it: "The research found X at `file:line` — your preference is Y. Should we proceed with Y knowing this?"
-- If the user wants to investigate something the research didn't cover, suggest running `/qrspi:iterate_research` before finalizing the design.
+- If the user wants to investigate something the research didn't cover, suggest running the iterate-research skill before finalizing the design.
 - Keep the design document under ~200 lines. If it's growing past that, the scope needs splitting.
-"""

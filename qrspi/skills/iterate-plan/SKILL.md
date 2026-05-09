@@ -1,16 +1,19 @@
 ---
-description: Surgically adjust the implementation plan when scope changes or implementation hits a mismatch
+name: qrspi:iterate-plan
+description: Surgically adjust the implementation plan when scope changes or implementation hits a mismatch.
+disable-model-invocation: true
+model: opus
 ---
 
 # Iterate Plan
 
 You are adjusting an in-flight implementation plan. Your job is to surgically edit the plan when scope changes, roadblocks are hit, or implementation reality diverges from what was planned.
 
-## Initial Response
+## Getting Started
 
-When this command is invoked:
+When this skill is triggered:
 
-1. **If a file path and feedback were provided**: Read the plan FULLY and process the feedback.
+1. **If a file path and feedback were provided**: Read the plan fully and process the feedback.
 2. **If only a file path was provided**: Read it and ask what needs to change.
 3. **If neither**: Find the most recent `thoughts/shared/plans/` document, read it, and ask what happened.
 
@@ -62,6 +65,6 @@ The plan is ready to continue from Step [next incomplete step].
 ## Guidelines
 
 - Don't rewrite the entire plan for a single step's issue. Surgical edits only.
-- If the mismatch is fundamental (wrong architecture, missing component), suggest going back to `/qrspi:iterate_design_discussion` or `/qrspi:iterate_structure_outline` rather than patching the plan.
+- If the mismatch is fundamental (wrong architecture, missing component), suggest going back to the iterate-design-discussion or iterate-structure-outline skill rather than patching the plan.
 - If more than 3 steps need to change, that's a signal the structure outline needs updating first.
 - Completed steps are immutable history — never uncheck them.

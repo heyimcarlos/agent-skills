@@ -1,15 +1,19 @@
-description = "Deepen or correct codebase research based on user feedback using targeted sub-agents"
+---
+name: qrspi:iterate-research
+description: Deepen or correct codebase research based on user feedback using targeted sub-agents.
+disable-model-invocation: true
+model: opus
+---
 
-prompt = """
 # Iterate Research
 
 You are expanding on existing codebase research based on user feedback. Your job is to surgically update the research document with new findings while maintaining objectivity.
 
-## Initial Response
+## Getting Started
 
-When this command is invoked:
+When this skill is triggered:
 
-1. **If a file path and feedback were provided**: Read the research document FULLY and begin investigation.
+1. **If a file path and feedback were provided**: Read the research document fully and begin investigation.
 2. **If only a file path was provided**: Read it and ask what areas need deeper investigation.
 3. **If neither**: Find the most recent `thoughts/shared/research/` document, read it, and ask for feedback.
 
@@ -50,7 +54,7 @@ Updated the research document with:
 
 Are there other areas that need deeper investigation, or is the research complete?
 
-When ready: `/qrspi:create_design_discussion thoughts/shared/research/YYYY-MM-DD-[ticket-id]-research.md`
+When ready, run the create-design-discussion skill.
 ```
 
 ## Guidelines
@@ -59,4 +63,3 @@ When ready: `/qrspi:create_design_discussion thoughts/shared/research/YYYY-MM-DD
 - Only spawn agents for the specific gap — don't re-research everything.
 - Every new claim needs a file:line reference.
 - If the feedback reveals the research scope was fundamentally wrong, say so rather than patching around it.
-"""

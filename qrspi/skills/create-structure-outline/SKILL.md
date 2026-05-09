@@ -1,24 +1,26 @@
-description = "Translate an approved design into a phased structural outline with vertical slices and verification checkpoints"
+---
+name: qrspi:create-structure-outline
+description: Translate an approved design into a phased structural outline with vertical slices and verification checkpoints.
+disable-model-invocation: true
+model: opus
+---
 
-prompt = """
 # Structure Outline
 
-You are defining the structural execution strategy for an approved design. Your job is to translate the design into a phased sequence of work with clear boundaries and verification checkpoints. You are Step 4 (Structure) in the QRSPI framework.
+You are defining the structural execution strategy for an approved design. Your job is to translate the design into a phased sequence of work with clear boundaries and verification checkpoints. This is Step 4 (Structure) in the QRSPI framework.
 
 **This is the "C header file" for the implementation.** It defines signatures, phases, and order — not the implementation details. The Plan phase will fill in the tactical steps.
 
-## Initial Response
+## Getting Started
 
-When this command is invoked:
+When this skill is triggered:
 
-1. **If a design file path was provided**: Read it FULLY and begin structuring.
+1. **If a design file path was provided**: Read it fully and begin structuring.
 2. **If no input was provided**, respond with:
    ```
    I'll create a structural outline from the approved design.
 
    Please provide the path to the approved design document (e.g., `thoughts/shared/design/YYYY-MM-DD-[ticket-id]-design.md`).
-
-   Tip: `/qrspi:create_structure_outline thoughts/shared/design/YYYY-MM-DD-ENG-1234-design.md`
    ```
    Then wait for input.
 
@@ -26,8 +28,8 @@ When this command is invoked:
 
 ### Step 1: Read and Verify Design is Approved
 
-1. Read the design document FULLY.
-2. Verify it has a clear approved approach (not still deciding between options). If the design still has unresolved open questions, stop and suggest running `/qrspi:iterate_design_discussion` first.
+1. Read the design document fully.
+2. Verify it has a clear approved approach (not still deciding between options). If the design still has unresolved open questions, stop and suggest running the iterate-design-discussion skill first.
 3. Read the research document referenced in the design for file-level context.
 
 ### Step 2: Define Phases Using Vertical Slices
@@ -131,7 +133,7 @@ Phase sequence:
 
 Does the ordering and scope of each phase look right? This is the last review point before the plan gets written.
 
-Once approved: `/qrspi:create_plan thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.md`
+Once approved, run the create-plan skill.
 ```
 
 ## Guidelines
@@ -141,4 +143,3 @@ Once approved: `/qrspi:create_plan thoughts/shared/structure/YYYY-MM-DD-[ticket-
 - The first phase should always produce something runnable/testable, even if it's just stubs returning hardcoded values.
 - Phase boundaries should align with natural commit points — each phase is a reasonable PR or commit.
 - Don't write implementation details here. "Add the handler for X" is correct. Code snippets belong in the Plan phase.
-"""

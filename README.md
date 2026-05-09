@@ -8,22 +8,22 @@ Skills, agents, and commands encode the workflows a senior engineer follows: res
 
 | Plugin | What it ships |
 |--------|---------------|
-| `core`  | 5 skills · 9 research subagents · 14 workflow commands (commit, describe_pr, debug, linear, worktree, handoff, founder_mode, validate_plan, implement_plan, plus CI variants) |
-| `qrspi` | 11 commands implementing the QRSPI workflow: **Q**uestion → **R**esearch → **S**pec → **P**lan → **I**mplement, plus iterate variants |
+| `core`  | 2 skills (ralph, improve-claude-md) · 14 workflow commands (commit, describe_pr, debug, linear, worktree, handoff, founder_mode, validate_plan, implement_plan, plus CI variants) |
+| `qrspi` | 11 skills implementing the **Q**uestion → **R**esearch → **S**pec → **P**lan → **I**mplement workflow · 6 research subagents (codebase + thoughts + web) |
 
 ## QRSPI workflow
 
-The framework `qrspi` enforces maps to five stages:
+Each stage is an explicit skill (with an `iterate-*` sibling for surgical adjustments without restarting the workflow):
 
-| Stage | Command | Purpose |
-|-------|---------|---------|
-| Question  | `_create_research_questions` | Turn a ticket into targeted questions before any code is read |
-| Research  | `_create_research` | Document the codebase as-is, grounded in real files |
-| Spec      | `create_design_discussion` → `create_structure_outline` | Synthesize research into architectural decisions and a phased outline |
-| Plan      | `create_plan` | Convert outline into a rigid step-by-step plan with dual verification |
-| Implement | `create_worktree` | Launch an isolated implementation session from an approved plan |
+| Stage | Skill | Purpose |
+|-------|-------|---------|
+| Question  | `qrspi:create-research-questions` | Turn a ticket into targeted questions before any code is read |
+| Research  | `qrspi:create-research` | Document the codebase as-is, grounded in real files |
+| Spec      | `qrspi:create-design-discussion` → `qrspi:create-structure-outline` | Synthesize research into architectural decisions and a phased outline |
+| Plan      | `qrspi:create-plan` | Convert outline into a rigid step-by-step plan with dual verification |
+| Implement | `qrspi:create-worktree` | Launch an isolated implementation session from an approved plan |
 
-Each phase has an `iterate_*` sibling for surgical adjustments without restarting the workflow.
+QRSPI skills set `disable-model-invocation: true` — the human invokes each phase deliberately rather than letting the model auto-trigger them.
 
 ## Installation
 
@@ -53,33 +53,35 @@ git clone https://github.com/heyimcarlos/agent-skills ~/repos/agent-skills
 
 Append `--project /path/to/repo` to install into a specific project instead of the user-level dir. Append `--copy` to snapshot files instead of symlinking.
 
-## Skills (5, in `core`)
+## Skills
 
-Skills auto-trigger when a task matches their description.
+### `core` (2) — auto-trigger by task description
 
 - **ralph** — generate an autonomous bash loop for any task (research, specs, implementation)
 - **improve-claude-md** — rewrite a CLAUDE.md using `<important if>` blocks for instruction adherence
-- **create-research** — document codebase as-is, with a thoughts/questions directory for historical context
-- **create-research-questions** — analyze a ticket to generate targeted research questions before investigation
-- **iterate-research-questions** — refine research questions and surface follow-up ambiguities
 
-## Subagents (9, in `core`)
+### `qrspi` (11) — explicitly invoked QRSPI workflow
 
-Specialist research personas. Used by skills, slash commands, and directly via the `Agent` tool.
+| Phase | Skills |
+|-------|--------|
+| Question  | `create-research-questions`, `iterate-research-questions` |
+| Research  | `create-research`, `iterate-research` |
+| Spec      | `create-design-discussion`, `iterate-design-discussion`, `create-structure-outline`, `iterate-structure-outline` |
+| Plan      | `create-plan`, `iterate-plan` |
+| Implement | `create-worktree` |
+
+## Subagents (6, in `qrspi`)
+
+Specialist research personas. Used by skills and directly via the `Agent` tool.
 
 - **codebase-locator** — super grep/glob; locates files, directories, components by description
 - **codebase-analyzer** — deep dive on implementation details for specific components
 - **codebase-pattern-finder** — finds similar implementations and concrete code examples
 - **thoughts-locator** — discovers relevant documents in `thoughts/` metadata directory
 - **thoughts-analyzer** — research equivalent of codebase-analyzer for `thoughts/`
-- **deep-research** — adaptive external knowledge gathering
-- **deep-research-agent** — comprehensive research with adaptive strategies
-- **repo-index** — repository indexing and codebase briefing
 - **web-search-researcher** — modern, web-only information
 
-## Slash commands
-
-### Core workflow (14)
+## Slash commands (`core`, 14)
 
 | Command | Purpose |
 |---------|---------|
@@ -94,28 +96,18 @@ Specialist research personas. Used by skills, slash commands, and directly via t
 | `validate_plan` | Verify implementation against plan and success criteria |
 | `implement_plan` | Implement a technical plan from `thoughts/shared/plans` |
 
-### QRSPI (11)
-
-| Phase | Commands |
-|-------|----------|
-| Question  | `_create_research_questions`, `_iterate_research_questions` |
-| Research  | `_create_research`, `_iterate_research` |
-| Spec      | `create_design_discussion`, `iterate_design_discussion`, `create_structure_outline`, `iterate_structure_outline` |
-| Plan      | `create_plan`, `iterate_plan` |
-| Worktree  | `create_worktree` |
-
-Underscore-prefixed commands are invoked indirectly by their non-prefixed siblings — not directly by the user.
+The QRSPI workflow used to ship as slash commands; it now ships as skills under `qrspi/skills/` instead.
 
 ## Repo layout
 
 ```
 .claude-plugin/marketplace.json   # marketplace metadata listing both plugins
-core/                             # plugin: skills + agents + utility commands
+core/                             # plugin: utility skills + slash commands
   .claude-plugin/plugin.json
-  skills/  agents/  commands/
-qrspi/                            # plugin: QRSPI workflow commands
+  skills/  commands/
+qrspi/                            # plugin: QRSPI workflow skills + research subagents
   .claude-plugin/plugin.json
-  commands/
+  skills/  agents/
 .claude/                          # reference snapshot of the maintainer's settings
 .gemini/                          # adapter dir (TOML translations + skills symlink)
 .codex/                           # adapter placeholder (installer flattens prompts)
@@ -129,9 +121,9 @@ bin/
 
 ## Editing
 
-Canonical content lives in `core/skills/`, `core/agents/`, `core/commands/`, `qrspi/commands/`. The `.claude/`, `.gemini/`, and `.codex/` dirs are adapters that point back at those — don't hand-edit them.
+Canonical content lives in `core/skills/`, `core/commands/`, `qrspi/skills/`, `qrspi/agents/`. The `.claude/`, `.gemini/`, and `.codex/` dirs are adapters that point back at those — don't hand-edit them.
 
-After editing slash command markdown, regenerate the Gemini TOML files:
+After editing any slash command markdown under `core/commands/`, regenerate the Gemini TOML files:
 
 ```bash
 python3 bin/build-gemini-commands

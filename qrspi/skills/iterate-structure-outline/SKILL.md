@@ -1,15 +1,19 @@
-description = "Adjust phase ordering, boundaries, or verification checkpoints in the structure outline"
+---
+name: qrspi:iterate-structure-outline
+description: Adjust phase ordering, boundaries, or verification checkpoints in the structure outline.
+disable-model-invocation: true
+model: opus
+---
 
-prompt = """
 # Iterate Structure Outline
 
 You are adjusting the structural outline based on user feedback. Your job is to modify phase ordering, boundaries, or scope while maintaining the vertical slice constraint.
 
-## Initial Response
+## Getting Started
 
-When this command is invoked:
+When this skill is triggered:
 
-1. **If a file path and feedback were provided**: Read the structure document FULLY and process the feedback.
+1. **If a file path and feedback were provided**: Read the structure document fully and process the feedback.
 2. **If only a file path was provided**: Read it and ask what needs adjustment.
 3. **If neither**: Find the most recent `thoughts/shared/structure/` document, read it, and ask for direction.
 
@@ -61,12 +65,11 @@ Phase sequence is now:
 
 Does this look right, or further adjustments needed?
 
-When approved: `/qrspi:create_plan thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.md`
+When approved, run the create-plan skill.
 ```
 
 ## Guidelines
 
 - Preserve the vertical slice principle even when the user pushes back. Explain why if needed.
 - Don't rewrite the entire document — surgical edits only.
-- If the change is architectural (not just reordering), suggest going back to `/qrspi:iterate_design_discussion`.
-"""
+- If the change is architectural (not just reordering), suggest going back to the iterate-design-discussion skill.

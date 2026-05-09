@@ -1,24 +1,26 @@
-description = "Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria"
+---
+name: qrspi:create-plan
+description: Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria.
+disable-model-invocation: true
+model: opus
+---
 
-prompt = """
 # Implementation Plan
 
-You are creating the final, tactical implementation plan from an approved structure outline. Your job is to convert the high-level phases into granular, executable steps that an implementation agent can follow mechanically. You are Step 5 (Plan) in the QRSPI framework.
+You are creating the final, tactical implementation plan from an approved structure outline. Your job is to convert the high-level phases into granular, executable steps that an implementation agent can follow mechanically. This is Step 5 (Plan) in the QRSPI framework.
 
 **This plan is the contract between human review and agent execution.** Every step must be unambiguous, every verification must be runnable, and every file must be named explicitly.
 
-## Initial Response
+## Getting Started
 
-When this command is invoked:
+When this skill is triggered:
 
-1. **If a structure file path was provided**: Read it FULLY, then read the design and research documents referenced in it. Begin planning.
+1. **If a structure file path was provided**: Read it fully, then read the design and research documents referenced in it. Begin planning.
 2. **If no input was provided**, respond with:
    ```
    I'll create an implementation plan from the approved structure outline.
 
    Please provide the path to the structure document (e.g., `thoughts/shared/structure/YYYY-MM-DD-[ticket-id]-structure.md`).
-
-   Tip: `/qrspi:create_plan thoughts/shared/structure/YYYY-MM-DD-ENG-1234-structure.md`
    ```
    Then wait for input.
 
@@ -26,7 +28,7 @@ When this command is invoked:
 
 ### Step 1: Read All Context
 
-1. Read the **structure outline** FULLY.
+1. Read the **structure outline** fully.
 2. Read the **design document** referenced in the structure.
 3. Read the **research document** referenced in the design — especially the file map and existing patterns sections.
 4. Spawn a **codebase-analyzer** agent to verify that the target files from the structure still exist and haven't changed since research was conducted. This catches stale references.
@@ -142,6 +144,5 @@ Please review. Once approved, this plan is ready for implementation.
 - Plans should be mechanical to execute. If a step requires judgment calls, the design phase didn't resolve enough.
 - Include concrete code snippets — not pseudocode — for non-trivial changes. Pull these from the research's Existing Patterns section.
 - Every phase checkpoint must pause for human confirmation of manual verification before proceeding to the next phase.
-- If you discover the structure outline missed something during planning, don't silently add it. Flag it and suggest running `/qrspi:iterate_structure_outline`.
+- If you discover the structure outline missed something during planning, don't silently add it. Flag it and suggest running the iterate-structure-outline skill.
 - Keep steps small enough that each one is independently verifiable. A step that says "implement the entire handler" is too big.
-"""

@@ -17,32 +17,31 @@ This repo is the single source of truth for skills, subagents, and slash command
 
 Canonical (editable) content lives in:
 
-- `core/skills/<name>/SKILL.md` — one skill per directory
-- `core/agents/<name>.md` — one subagent per file
-- `core/commands/<name>.md` — utility slash commands
-- `qrspi/commands/<name>.md` — QRSPI workflow commands
+- `core/skills/<name>/SKILL.md` — utility skills (ralph, improve-claude-md)
+- `core/commands/<name>.md` — utility slash commands (commit, describe_pr, debug, linear, …)
+- `qrspi/skills/<name>/SKILL.md` — QRSPI workflow skills (one per stage, plus iterate variants)
+- `qrspi/agents/<name>.md` — research subagents (codebase + thoughts + web)
 
 ## Orchestration: skills, subagents, and commands
 
 Three composable layers, three different jobs. Don't mix them up.
 
-- **Skills** (`*/skills/<name>/SKILL.md`) — workflows with steps and exit criteria. The _how_. Auto-trigger when a task matches the description.
-- **Subagents** (`core/agents/<name>.md`) — research/specialist roles with a perspective and an output format. The _who_. Invoked via the `Agent` tool.
-- **Slash commands** (`*/commands/<name>.md`) — user-facing entry points. The _when_. The orchestration layer.
+- **Skills** (`*/skills/<name>/SKILL.md`) — workflows with steps and exit criteria. The _how_. `core` skills auto-trigger when a task matches the description; QRSPI skills set `disable-model-invocation: true` and are invoked explicitly.
+- **Subagents** (`qrspi/agents/<name>.md`) — research/specialist roles with a perspective and an output format. The _who_. Invoked via the `Agent` tool.
+- **Slash commands** (`core/commands/<name>.md`) — user-facing entry points for git/PR/Linear/handoff utilities. The _when_.
 
-Composition rule: **the user (or a slash command) is the orchestrator.** Subagents do not invoke other subagents. A subagent may invoke skills.
+Composition rule: **the user (or a skill / slash command) is the orchestrator.** Subagents do not invoke other subagents. A skill or subagent may invoke other skills.
 
-The QRSPI workflow is the canonical multi-step orchestration in this repo: a top-level command (e.g. `create_plan`) sequences the underscore-prefixed phase commands (`_create_research_questions`, `_create_research`, …) and consumes their outputs. Don't build a "router" persona that picks which other persona to call — that's the slash command's job.
+The QRSPI workflow is the canonical multi-step orchestration in this repo: each phase is its own skill (`qrspi:create-research-questions`, `qrspi:create-research`, `qrspi:create-design-discussion`, `qrspi:create-structure-outline`, `qrspi:create-plan`, `qrspi:create-worktree`) with `iterate-*` siblings for refinement. The user drives stage-to-stage transitions; don't build a "router" persona that picks which stage to run next.
 
-**Claude Code interop:** the agents in `core/agents/` work as Claude Code subagents (auto-discovered from the plugin's `agents/` directory). Plugin agents silently ignore the `hooks`, `mcpServers`, and `permissionMode` frontmatter fields. Subagents cannot spawn other subagents.
+**Claude Code interop:** the agents in `qrspi/agents/` work as Claude Code subagents (auto-discovered from the plugin's `agents/` directory). Plugin agents silently ignore the `hooks`, `mcpServers`, and `permissionMode` frontmatter fields. Subagents cannot spawn other subagents.
 
 ## Conventions
 
-- **Skill `SKILL.md`** uses the standard `name` / `description` frontmatter. No `model:` line unless deliberate.
+- **Skill `SKILL.md`** uses the standard `name` / `description` frontmatter. Add `model:` only when deliberate; QRSPI skills use `model: opus` and `disable-model-invocation: true` so the human triggers each phase.
 - **Subagent `<name>.md`** uses the standard subagent frontmatter (`name`, `description`, `tools`).
 - **Slash command files** use a `description:` frontmatter field so the Gemini TOML generator can lift it.
-- **Underscore-prefixed commands** (e.g. `qrspi/commands/_create_research.md`) are meant to be invoked indirectly by other commands, not by the user.
-- After editing any `core/commands/*.md` or `qrspi/commands/*.md`, regenerate the Gemini TOML:
+- After editing any `core/commands/*.md`, regenerate the Gemini TOML:
 
   ```bash
   python3 bin/build-gemini-commands
@@ -51,7 +50,7 @@ The QRSPI workflow is the canonical multi-step orchestration in this repo: a top
 ## Skill anatomy
 
 ```
-core/skills/{skill-name}/      # kebab-case directory
+{plugin}/skills/{skill-name}/  # kebab-case directory
   SKILL.md                     # required, exactly this filename
   scripts/                     # optional executable scripts
     {script-name}.sh
@@ -93,4 +92,4 @@ If a skill ships scripts:
 - Don't update `.claude/settings.json` casually — it's a personal reference snapshot. Only update when you've changed your real `~/.claude/settings.json` and want the repo snapshot to match.
 - Don't commit `.claude/settings.local.json` or any per-machine state (see `.gitignore`).
 - Don't add a `model:` line to skill or subagent frontmatter unless deliberate — let the host tool pick.
-- Don't have a subagent spawn another subagent. Orchestrate from a slash command instead.
+- Don't have a subagent spawn another subagent. Orchestrate from a skill or slash command instead.

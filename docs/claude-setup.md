@@ -21,12 +21,12 @@ This registers `agent-skills` as a known marketplace pointing at `https://github
 
 ## What you get
 
-| Plugin | Slash command prefix | Contents |
-|--------|----------------------|----------|
-| `core` | `/core:*` | 5 skills · 9 subagents · 14 utility commands (commit, describe_pr, debug, linear, worktree, handoff, founder_mode, validate_plan, implement_plan, plus CI variants) |
-| `qrspi` | `/qrspi:*` | 11 commands implementing the Question→Research→Spec→Plan→Implement workflow |
+| Plugin | Surfaces | Contents |
+|--------|----------|----------|
+| `core` | `/core:*` slash commands · auto-triggered skills | 2 skills (ralph, improve-claude-md) · 14 utility commands (commit, describe_pr, debug, linear, worktree, handoff, founder_mode, validate_plan, implement_plan, plus CI variants) |
+| `qrspi` | `qrspi:*` skills (explicitly invoked) · subagents via Agent tool | 11 skills implementing the Question → Research → Spec → Plan → Implement workflow · 6 research subagents (codebase + thoughts + web) |
 
-Skills auto-trigger by description match. Subagents are available via the Agent tool. Slash commands appear in `/` menu autocomplete.
+`core` skills auto-trigger by description match. QRSPI skills set `disable-model-invocation: true` and are invoked explicitly per phase. Subagents are available via the Agent tool. Slash commands appear in `/` menu autocomplete.
 
 ## Settings reference
 

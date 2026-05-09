@@ -64,18 +64,17 @@ install_gemini() {
   echo "gemini → $dest (mode=$MODE)"
   place "$REPO/core/skills" "$dest/skills"
   mkdir -p "$dest/commands"
-  for plugin in core qrspi; do
-    place "$REPO/.gemini/commands/$plugin" "$dest/commands/$plugin"
-  done
+  place "$REPO/.gemini/commands/core" "$dest/commands/core"
+  echo "  note: qrspi plugin (skills + agents) not yet wired into Gemini"
 }
 
 install_codex() {
   local dest; dest="$(resolve_dest codex)"
   echo "codex → $dest (mode=$MODE)"
   mkdir -p "$dest/prompts"
-  for f in "$REPO/core/commands"/*.md;  do place "$f" "$dest/prompts/core_$(basename "$f")"; done
-  for f in "$REPO/qrspi/commands"/*.md; do place "$f" "$dest/prompts/qrspi_$(basename "$f")"; done
+  for f in "$REPO/core/commands"/*.md; do place "$f" "$dest/prompts/core_$(basename "$f")"; done
   echo "  prompts placed flat with plugin prefix; AGENTS.md should be added per-project"
+  echo "  note: qrspi plugin (skills + agents) not yet wired into Codex"
 }
 
 case "$TARGET" in

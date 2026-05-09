@@ -12,15 +12,23 @@ Per-tool details: [claude-setup](./claude-setup.md) · [gemini-setup](./gemini-s
 
 ## What you get
 
-**Skills (5)** — auto-trigger by task match
+**Skills (13)**
+
+`core` (2) — auto-trigger by task description match
 - `ralph` — generate an autonomous bash loop for any task
 - `improve-claude-md` — rewrite CLAUDE.md with `<important if>` blocks
-- `create-research`, `create-research-questions`, `iterate-research-questions` — research helpers used by QRSPI
 
-**Subagents (9)**
+`qrspi` (11) — QRSPI workflow, explicitly invoked (`disable-model-invocation: true`)
+- Question: `create-research-questions`, `iterate-research-questions`
+- Research: `create-research`, `iterate-research`
+- Spec: `create-design-discussion`, `iterate-design-discussion`, `create-structure-outline`, `iterate-structure-outline`
+- Plan: `create-plan`, `iterate-plan`
+- Implement: `create-worktree`
+
+**Subagents (6, in `qrspi`)**
 - `codebase-analyzer`, `codebase-locator`, `codebase-pattern-finder`
-- `deep-research`, `deep-research-agent`, `repo-index`
-- `thoughts-analyzer`, `thoughts-locator`, `web-search-researcher`
+- `thoughts-analyzer`, `thoughts-locator`
+- `web-search-researcher`
 
 **Workflow commands (`core` plugin, 14)**
 - `commit`, `ci_commit`
@@ -28,12 +36,3 @@ Per-tool details: [claude-setup](./claude-setup.md) · [gemini-setup](./gemini-s
 - `linear`, `debug`, `local_review`
 - `create_worktree`, `create_handoff`, `resume_handoff`
 - `founder_mode`, `validate_plan`, `implement_plan`
-
-**QRSPI commands (`qrspi` plugin, 11)**
-- Question: `_create_research_questions`, `_iterate_research_questions`
-- Research: `_create_research`, `_iterate_research`
-- Spec: `create_design_discussion`, `iterate_design_discussion`, `create_structure_outline`, `iterate_structure_outline`
-- Plan: `create_plan`, `iterate_plan`
-- Worktree: `create_worktree`
-
-Underscore-prefixed commands are invoked indirectly by their non-prefixed siblings, not directly by the user.

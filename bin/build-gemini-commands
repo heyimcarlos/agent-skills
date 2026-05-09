@@ -2,11 +2,14 @@
 # Translate Claude command markdown files (frontmatter + body) into
 # Gemini CLI TOML command files.
 #
-# Reads:  core/commands/*.md and qrspi/commands/*.md
+# Reads:  core/commands/*.md
 # Writes: .gemini/commands/<plugin>/<name>.toml
 #
 # Frontmatter `description:` becomes TOML description.
 # The body becomes the TOML prompt (multi-line string).
+#
+# Note: the qrspi plugin no longer ships slash commands — its workflow lives
+# in qrspi/skills/ and qrspi/agents/, neither of which are wired into Gemini yet.
 
 from __future__ import annotations
 
@@ -16,7 +19,6 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 SOURCES = [
     ("core", REPO / "core" / "commands"),
-    ("qrspi", REPO / "qrspi" / "commands"),
 ]
 OUT_BASE = REPO / ".gemini" / "commands"
 

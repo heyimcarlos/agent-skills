@@ -10,11 +10,13 @@ Result:
 ```
 ~/.codex/prompts/core_commit.md
 ~/.codex/prompts/core_describe_pr.md
-~/.codex/prompts/qrspi_create_research.md
+~/.codex/prompts/core_linear.md
 …
 ```
 
-Codex prompts live in a flat directory and are invoked as `/core_commit`, `/qrspi_create_research`, etc. The plugin name is folded into the filename prefix.
+Codex prompts live in a flat directory and are invoked as `/core_commit`, `/core_describe_pr`, etc. The plugin name is folded into the filename prefix.
+
+> The `qrspi` plugin no longer ships slash commands — its workflow lives in `qrspi/skills/` and `qrspi/agents/`. Only `core/commands/` are translated into Codex prompts; QRSPI skill/agent integration for Codex is not yet implemented.
 
 ## AGENTS.md
 

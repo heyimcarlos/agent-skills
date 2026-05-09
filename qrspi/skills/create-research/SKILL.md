@@ -1,36 +1,39 @@
 ---
-description: Document codebase as-is with thoughts questions directory for historical context
+name: qrspi:create-research
+description: Document codebase as-is using parallel sub-agents, guided only by the research questions document.
+disable-model-invocation: true
 model: opus
 ---
 
 # Codebase Research
 
-You are tasked with conducting comprehensive research across the codebase based on a set of clarified questions.
+You are tasked with conducting comprehensive research across the codebase based on a set of clarified research questions.
 
-## CRITICAL: YOUR ONLY JOB IS TO DOCUMENT AND EXPLAIN THE CODEBASE AS IT EXISTS TODAY
+## CRITICAL: Your only job is to document and explain the codebase as it exists today
+
 - DO NOT suggest improvements or changes
 - DO NOT perform root cause analysis
-- DO NOT propose future enhacements
+- DO NOT propose future enhancements
 - DO NOT identify problems
 - DO NOT critique the implementation
 - DO NOT recommend refactoring, optimization, or architectural changes
 
-## Initial Response
+The Design phase is where solutions get proposed. The research phase is pure documentation of current reality.
 
-When this command is invoked:
+## Getting Started
+
+When this skill is triggered:
 
 1. **If a file path was provided** (e.g., `thoughts/shared/questions/YYYY-MM-DD-ENG-XXXX-questions.md`):
-   - Read it FULLY using the Read tool (no limit/offset).
+   - Read it fully using the Read tool (no limit/offset).
    - Begin the research process immediately.
 
 2. **If no input was provided**, respond with:
    ```
    I'll execute the Research phase to map out the codebase objectively.
 
-   Please provide the path to the answered questions document from the Question phase
+   Please provide the path to the questions document from the Question phase
    (e.g., `thoughts/shared/questions/YYYY-MM-DD-ENG-XXXX-questions.md`).
-
-   Tip: `/qrspi:create_research thoughts/shared/questions/YYYY-MM-DD-ENG-1234-questions.md`
    ```
    Then wait for input.
 
@@ -38,22 +41,19 @@ When this command is invoked:
 
 ### Step 1: Input Analysis
 
-1. **Read the questions document FULLY** using the Read tool without limit/offset.
-2. **Extract research targets**: Identify the specific components, concepts, data flows, and constraints mentioned.
+1. **Read the questions document fully** using the Read tool without limit/offset.
+2. **Extract research targets**: Identify the specific components, concepts, data flows, and constraints implied by the questions.
 3. **Formulate a search plan**: List the specific codebase areas that require investigation.
 
 ### Step 2: Parallel Sub-agent Research
 
-Spawn research agents in parallel to gather facts efficiently. Each agent operates in its own context window — the expensive investigation stays isolated, only compressed results come back to you.
+Spawn research agents in parallel to gather facts efficiently. Each agent operates in its own context window — the expensive investigation stays isolated, and only compressed results come back to you.
 
 Launch these agents simultaneously:
 
-- **codebase-locator**: Find all files related to the identified components. Be EXTREMELY specific about directories to focus on. Request file paths grouped by purpose (implementation, tests, config, types).
-
+- **codebase-locator**: Find all files related to the identified components. Be extremely specific about directories to focus on. Request file paths grouped by purpose (implementation, tests, config, types).
 - **codebase-analyzer**: Trace how the current implementation works for each identified component. Request specific file:line references, data flow paths, and function signatures.
-
-- **codebase-pattern-finder**: Find existing patterns in the codebase that relate to the components under investigation. Request concrete code examples with file:line references. This surfaces how similar problems are currently solved.
-
+- **codebase-pattern-finder**: Find existing patterns in the codebase that relate to the components under investigation. Request concrete code examples with file:line references.
 - **thoughts-locator**: Search `thoughts/` for any existing research, plans, or decisions related to the identified components.
 
 **Agent spawning constraints**:
@@ -63,7 +63,7 @@ Launch these agents simultaneously:
 
 ### Step 3: Verify and Deepen
 
-1. **Wait for ALL agents to complete** before proceeding.
+1. **Wait for all agents to complete** before proceeding.
 2. **Read all critical files** identified by agents directly into your main context. Never rely solely on an agent's summary for files central to the investigation.
 3. **Trace loose ends**: If a function calls an interface, find the concrete implementations. If a config value is referenced, find where it's set.
 
@@ -115,9 +115,7 @@ After scope confirmation, write to `thoughts/shared/research/YYYY-MM-DD-[ticket-
 
 ## Existing Patterns
 
-[Patterns discovered by codebase-pattern-finder that are relevant to this area]
-- **Pattern**: [Name] — found in `file:line`
-  - [How it works, with code reference]
+[Patterns discovered by codebase-pattern-finder relevant to this area]
 - **Pattern**: [Name] — found in `file:line`
   - [How it works, with code reference]
 
@@ -146,7 +144,7 @@ Research report written to:
 
 Please review. Does this provide a complete and accurate picture of the current system?
 
-Next step: `/qrspi:create_design_discussion thoughts/shared/research/YYYY-MM-DD-[ticket-id]-research.md`
+When ready, run the create-design-discussion skill with the research path.
 ```
 
 Be ready to spawn follow-up agents if the user identifies gaps. Use the Edit tool to update the report.

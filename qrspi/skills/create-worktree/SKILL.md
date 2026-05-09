@@ -1,13 +1,17 @@
-description = "Create an isolated worktree and launch an implementation session from an approved plan"
+---
+name: qrspi:create-worktree
+description: Create an isolated git worktree and launch an implementation session from an approved plan.
+disable-model-invocation: true
+model: opus
+---
 
-prompt = """
 # Create Worktree & Launch Implementation
 
 You are setting up an isolated git worktree for implementation and optionally launching a `humanlayer launch` session to execute the plan. This connects the QRSPI planning pipeline to actual code execution.
 
-## Initial Response
+## Getting Started
 
-When this command is invoked:
+When this skill is triggered:
 
 1. **If a plan file path was provided**: Read it to extract context (ticket ID, feature name), then proceed to worktree setup.
 2. **If no input was provided**, respond with:
@@ -15,8 +19,6 @@ When this command is invoked:
    I'll set up a worktree for implementation.
 
    Please provide the path to the approved plan (e.g., `thoughts/shared/plans/YYYY-MM-DD-[ticket-id]-plan.md`).
-
-   Tip: `/qrspi:create_worktree thoughts/shared/plans/2025-01-08-ENG-1234-plan.md`
    ```
    Then wait for input.
 
@@ -24,7 +26,7 @@ When this command is invoked:
 
 ### Step 1: Read the Plan and Determine Details
 
-1. Read the plan file FULLY.
+1. Read the plan file fully.
 2. Extract:
    - **Ticket ID / feature name**: From the plan's header or references section
    - **Branch action type**: `feature`, `fix`, or `hotfix` based on the ticket type
@@ -101,4 +103,3 @@ When done, clean up with: ~/scripts/cleanup_worktree.sh <worktree-name>
 - The launch command chains: implement → commit → PR. Adapt the chain based on what commands are available (check if `/rpi:commit`, `/rpi:describe_pr` exist, fall back to `/commit`, `/describe_pr`).
 - If the user doesn't want to launch immediately (just wants the worktree), skip Step 5 and present the launch command for later use.
 - If the project doesn't use `humanlayer launch`, just create the worktree and tell the user to `cd` into it.
-"""

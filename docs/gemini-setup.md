@@ -10,10 +10,11 @@ Result:
 ```
 ~/.gemini/skills            → ~/repos/agent-skills/core/skills
 ~/.gemini/commands/core/    → *.toml translations of core/commands/
-~/.gemini/commands/qrspi/   → *.toml translations of qrspi/commands/
 ```
 
-Skills auto-discover from `SKILL.md` frontmatter. Slash commands invoke as `/core/commit`, `/qrspi/create_research`, etc. (Gemini uses `/` as the namespace separator.)
+Skills auto-discover from `SKILL.md` frontmatter. `core` slash commands invoke as `/core/commit`, `/core/describe_pr`, etc. (Gemini uses `/` as the namespace separator.)
+
+> The `qrspi` plugin no longer ships slash commands — its workflow lives in `qrspi/skills/` and `qrspi/agents/`. The Gemini installer currently wires only `core/skills` into `~/.gemini/skills`; QRSPI skill/agent integration for Gemini is not yet implemented.
 
 ## Regenerating commands
 
