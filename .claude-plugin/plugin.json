@@ -23,6 +23,7 @@
     "./skills/qrspi/create-structure-outline",
     "./skills/qrspi/create-plan",
     "./skills/qrspi/create-worktree",
+    "./skills/qrspi/setup-qrspi",
     "./skills/qrspi/iterate-research-questions",
     "./skills/qrspi/iterate-research",
     "./skills/qrspi/iterate-design-discussion",

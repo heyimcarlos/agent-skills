@@ -45,6 +45,7 @@ Each stage is its own skill, with an `iterate-*` sibling for surgical adjustment
 | Spec      | [`create-design-discussion`](./skills/qrspi/create-design-discussion/SKILL.md) → [`create-structure-outline`](./skills/qrspi/create-structure-outline/SKILL.md) | Synthesize research into architectural decisions and a phased outline |
 | Plan      | [`create-plan`](./skills/qrspi/create-plan/SKILL.md) | Convert outline into a rigid step-by-step plan with dual verification |
 | Implement | [`create-worktree`](./skills/qrspi/create-worktree/SKILL.md) | Launch an isolated implementation session from an approved plan |
+| Setup     | [`setup-qrspi`](./skills/qrspi/setup-qrspi/SKILL.md) | Initialize the local `thoughts/` workspace used by the QRSPI skills |
 
 QRSPI skills set `disable-model-invocation: true` — the human invokes each phase deliberately rather than letting the model auto-trigger them.
 
@@ -93,6 +94,7 @@ The Question → Research → Spec → Plan → Implement workflow as explicit s
 - [**create-plan**](./skills/qrspi/create-plan/SKILL.md) — Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria.
 - [**iterate-plan**](./skills/qrspi/iterate-plan/SKILL.md) — Surgically adjust the implementation plan when scope changes or implementation hits a mismatch.
 - [**create-worktree**](./skills/qrspi/create-worktree/SKILL.md) — Create an isolated git worktree and launch an implementation session from an approved plan.
+- [**setup-qrspi**](./skills/qrspi/setup-qrspi/SKILL.md) — Set up the local `thoughts/` workspace and ignore it from git.
 
 ### Subagents (Claude Code only)
 
