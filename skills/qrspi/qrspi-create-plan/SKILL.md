@@ -1,5 +1,5 @@
 ---
-name: create-plan
+name: qrspi-create-plan
 description: Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria.
 disable-model-invocation: true
 model: opus
@@ -129,7 +129,7 @@ If any check fails, fix the plan or flag the issue.
 If the input args contained `--output=html`, also write a sibling deck at `thoughts/shared/plans/YYYY-MM-DD-[ticket-id]-plan.html` following the conventions in `skills/qrspi/HTML-OUTPUT.md`.
 
 Phase-specific slide structure for this skill:
-- **Title slide**: feature, structure link, date, link to markdown source. Reserve space for an "Updated" banner that iterate-plan will append.
+- **Title slide**: feature, structure link, date, link to markdown source. Reserve space for an "Updated" banner that qrspi-iterate-plan will append.
 - **Phase navigation**: small SVG (or list of anchored links) jumping to each phase slide.
 - **Per-step slides**: one slide per step (or one phase per slide if steps are tiny). Each step shows:
   - File path in a copy-friendly `<code>` block
@@ -165,5 +165,5 @@ Please review. Once approved, this plan is ready for implementation.
 - Plans should be mechanical to execute. If a step requires judgment calls, the design phase didn't resolve enough.
 - Include concrete code snippets — not pseudocode — for non-trivial changes. Pull these from the research's Existing Patterns section.
 - Every phase checkpoint must pause for human confirmation of manual verification before proceeding to the next phase.
-- If you discover the structure outline missed something during planning, don't silently add it. Flag it and suggest running the iterate-structure-outline skill.
+- If you discover the structure outline missed something during planning, don't silently add it. Flag it and suggest running the qrspi-qrspi-iterate-structure-outline skill.
 - Keep steps small enough that each one is independently verifiable. A step that says "implement the entire handler" is too big.

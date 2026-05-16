@@ -1,5 +1,5 @@
 ---
-name: setup-qrspi
+name: qrspi-setup
 description: Set up the QRSPI thoughts system in a repository by creating the local thoughts/shared directory structure and adding thoughts/ to .gitignore. Use when initializing QRSPI, bootstrapping thoughts/shared folders, replacing the old HumanLayer thoughts setup, or when QRSPI skills fail because thoughts/ does not exist.
 disable-model-invocation: true
 ---
@@ -21,7 +21,7 @@ This skill replaces the old HumanLayer CLI bootstrap path. Do not require `human
 Run the bundled setup script from the repository root:
 
 ```bash
-bash skills/qrspi/setup-qrspi/scripts/setup-thoughts.sh
+bash skills/qrspi/qrspi-setup/scripts/setup-thoughts.sh
 ```
 
 If the skill is installed outside this repository and the script path is unavailable, perform the equivalent steps manually:

@@ -1,5 +1,5 @@
 ---
-name: iterate-design-discussion
+name: qrspi-iterate-design-discussion
 description: Refine design options and converge on an architectural decision through collaborative discussion.
 disable-model-invocation: true
 model: opus
@@ -43,7 +43,7 @@ After updating the markdown, check whether a sibling `.html` file exists at the 
 
 - **Sibling `.html` exists**: Refresh affected slides. Specifically: move rejected option slides into a "Resolved Decisions" section (don't delete them), promote the chosen option to a clearly-marked "Approved" slide with `badge ok`, move resolved questions out of the "Open Questions" slide, and update the recommendation. Append an "Updated" `<aside class="meta">` to the title slide.
 - **No sibling, no flag**: Skip — markdown stays canonical.
-- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-design-discussion`'s Step 6b.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `qrspi-create-design-discussion`'s Step 6b.
 
 ### Step 3: Validate Completeness
 
@@ -68,7 +68,7 @@ Key decisions:
 - [Decision 1]
 - [Decision 2]
 
-Next step: run the create-structure-outline skill.
+Next step: run the qrspi-create-structure-outline skill.
 ```
 
 If still iterating:
@@ -83,5 +83,5 @@ What's your thinking on these?
 
 - Preserve the discussion history. Don't delete rejected options — move them to `## Resolved Decisions` with the reasoning.
 - If the user's feedback contradicts the research findings, flag it: "The research found X at `file:line` — your preference is Y. Should we proceed with Y knowing this?"
-- If the user wants to investigate something the research didn't cover, suggest running the iterate-research skill before finalizing the design.
+- If the user wants to investigate something the research didn't cover, suggest running the qrspi-iterate-research skill before finalizing the design.
 - Keep the design document under ~200 lines. If it's growing past that, the scope needs splitting.

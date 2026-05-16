@@ -1,6 +1,6 @@
 # QRSPI HTML Output Reference
 
-This document is the source of truth for the `--output=html` mode shared by every doc-producing QRSPI skill (`create-*` and `iterate-*` for research-questions, research, design-discussion, structure-outline, plan). `create-worktree` produces no document and is excluded.
+This document is the source of truth for the `--output=html` mode shared by every doc-producing QRSPI skill (`create-*` and `iterate-*` for research-questions, research, design-discussion, structure-outline, plan). `qrspi-create-worktree` produces no document and is excluded.
 
 When a QRSPI skill runs with `--output=html`, it emits **both** a markdown file (canonical) and a sibling HTML file at the same path with the `.html` extension. Iterate skills detect the sibling and refresh both together.
 
@@ -98,7 +98,7 @@ The skeleton is the same across phases. What changes is the slide content per ph
 
 Each phase has a different shape of content. The sections below are guidance, not a rigid template — adapt to the actual document.
 
-### Research questions (`create-research-questions` / `iterate-research-questions`)
+### Research questions (`qrspi-create-research-questions` / `qrspi-iterate-research-questions`)
 
 1. **Title** — ticket title, source link, status.
 2. **Context summary** — the objective context paragraph.
@@ -106,7 +106,7 @@ Each phase has a different shape of content. The sections below are guidance, no
 4. **Questions** — one slide per question or one slide per category, numbered with badges (`info` for active questions). Use vertical sub-slides if a question has clarifications.
 5. **Coverage check** — table of "areas mentioned in ticket" vs. "questions covering them" so the reader can spot gaps.
 
-### Research (`create-research` / `iterate-research`)
+### Research (`qrspi-create-research` / `qrspi-iterate-research`)
 
 1. **Title** — ticket, research scope, date.
 2. **TL;DR** — 3–5 bullets answering the questions in plain language.
@@ -116,7 +116,7 @@ Each phase has a different shape of content. The sections below are guidance, no
 6. **Existing patterns** — a comparison grid (`grid-2`/`grid-3`) of patterns with file:line, brief description, and which files use each.
 7. **Discrepancies** — table of "ticket assumes / codebase actually does" with a `warn` or `bad` badge.
 
-### Design discussion (`create-design-discussion` / `iterate-design-discussion`)
+### Design discussion (`qrspi-create-design-discussion` / `qrspi-iterate-design-discussion`)
 
 1. **Title** — feature, ticket, date.
 2. **Current vs. desired** — `grid-2` cards or a side-by-side table.
@@ -125,7 +125,7 @@ Each phase has a different shape of content. The sections below are guidance, no
 5. **Open questions** — list with `warn` badges; iterate moves resolved ones to a "Decisions" slide.
 6. **Approved approach** — last slide once iteration converges. Bold visual marker (`badge ok`) to make it obvious.
 
-### Structure outline (`create-structure-outline` / `iterate-structure-outline`)
+### Structure outline (`qrspi-create-structure-outline` / `qrspi-iterate-structure-outline`)
 
 1. **Title** — feature, design link, date.
 2. **What we're NOT doing** — a high-contrast slide with explicit exclusions and rationale.
@@ -133,7 +133,7 @@ Each phase has a different shape of content. The sections below are guidance, no
 4. **Per-phase slides** — one slide each, with `card` blocks for goal / files / verification (automated and manual side-by-side via `grid-2`) / boundary. Use `info` badges for "tracer bullet" phases and `ok` badges for verification status.
 5. **Testing strategy** — final slide with unit/integration/manual blocks.
 
-### Plan (`create-plan` / `iterate-plan`)
+### Plan (`qrspi-create-plan` / `qrspi-iterate-plan`)
 
 1. **Title** — feature, structure link, date, last-updated banner if iterated.
 2. **Phase navigation** — small SVG with anchored links to each phase slide.

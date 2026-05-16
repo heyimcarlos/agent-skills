@@ -27,7 +27,7 @@ Pick which skills to install and which agents to install them into. The CLI auto
 skills/
   engineering/    # daily code work — git, PRs, planning, implementation, debug
   productivity/   # general workflow — autonomous loops, CLAUDE.md tuning
-  qrspi/          # the QRSPI workflow as 11 skills (create-* + iterate-*)
+  qrspi/          # the QRSPI workflow as prefixed qrspi-* setup, create, and iterate skills
   misc/           # reserved for rarely-used skills
 agents/           # Claude Code subagents (codebase + thoughts + web research)
 .claude-plugin/
@@ -40,16 +40,16 @@ Each stage is its own skill, with an `iterate-*` sibling for surgical adjustment
 
 | Stage | Skill | Purpose |
 |-------|-------|---------|
-| Question  | [`create-research-questions`](./skills/qrspi/create-research-questions/SKILL.md) | Turn a ticket into targeted questions before any code is read |
-| Research  | [`create-research`](./skills/qrspi/create-research/SKILL.md) | Document the codebase as-is, grounded in real files |
-| Spec      | [`create-design-discussion`](./skills/qrspi/create-design-discussion/SKILL.md) → [`create-structure-outline`](./skills/qrspi/create-structure-outline/SKILL.md) | Synthesize research into architectural decisions and a phased outline |
-| Plan      | [`create-plan`](./skills/qrspi/create-plan/SKILL.md) | Convert outline into a rigid step-by-step plan with dual verification |
-| Implement | [`create-worktree`](./skills/qrspi/create-worktree/SKILL.md) | Launch an isolated implementation session from an approved plan |
-| Setup     | [`setup-qrspi`](./skills/qrspi/setup-qrspi/SKILL.md) | Initialize the local `thoughts/` workspace used by the QRSPI skills |
+| Question  | [`qrspi-create-research-questions`](./skills/qrspi/qrspi-create-research-questions/SKILL.md) | Turn a ticket into targeted questions before any code is read |
+| Research  | [`qrspi-create-research`](./skills/qrspi/qrspi-create-research/SKILL.md) | Document the codebase as-is, grounded in real files |
+| Spec      | [`qrspi-create-design-discussion`](./skills/qrspi/qrspi-create-design-discussion/SKILL.md) → [`qrspi-create-structure-outline`](./skills/qrspi/qrspi-create-structure-outline/SKILL.md) | Synthesize research into architectural decisions and a phased outline |
+| Plan      | [`qrspi-create-plan`](./skills/qrspi/qrspi-create-plan/SKILL.md) | Convert outline into a rigid step-by-step plan with dual verification |
+| Implement | [`qrspi-create-worktree`](./skills/qrspi/qrspi-create-worktree/SKILL.md) | Launch an isolated implementation session from an approved plan |
+| Setup     | [`qrspi-setup`](./skills/qrspi/qrspi-setup/SKILL.md) | Initialize the local `thoughts/` workspace used by the QRSPI skills |
 
-QRSPI skills set `disable-model-invocation: true` — the human invokes each phase deliberately rather than letting the model auto-trigger them.
+QRSPI skills use a `qrspi-` name prefix so they are easy to find and select during installation. They set `disable-model-invocation: true` — the human invokes each phase deliberately rather than letting the model auto-trigger them.
 
-Every doc-producing QRSPI skill (all of the above except `create-worktree`) accepts an optional `--output=html` flag. When present, the skill emits a reveal.js slide deck alongside the canonical markdown — color, SVG diagrams, annotated code, comparison tables. Iterate skills detect the sibling `.html` and refresh both. See [`skills/qrspi/HTML-OUTPUT.md`](./skills/qrspi/HTML-OUTPUT.md) for the conventions and per-phase slide structures.
+Every doc-producing QRSPI skill (all of the above except `qrspi-create-worktree`) accepts an optional `--output=html` flag. When present, the skill emits a reveal.js slide deck alongside the canonical markdown — color, SVG diagrams, annotated code, comparison tables. Iterate skills detect the sibling `.html` and refresh both. See [`skills/qrspi/HTML-OUTPUT.md`](./skills/qrspi/HTML-OUTPUT.md) for the conventions and per-phase slide structures.
 
 ## Reference
 
@@ -83,18 +83,18 @@ General workflow tools, not code-specific.
 
 The Question → Research → Spec → Plan → Implement workflow as explicit skills.
 
-- [**create-research-questions**](./skills/qrspi/create-research-questions/SKILL.md) — Analyze a ticket to generate targeted research questions before any codebase investigation begins.
-- [**iterate-research-questions**](./skills/qrspi/iterate-research-questions/SKILL.md) — Refine research questions by adding, removing, or reframing them based on user feedback.
-- [**create-research**](./skills/qrspi/create-research/SKILL.md) — Document codebase as-is using parallel sub-agents, guided only by the research questions document.
-- [**iterate-research**](./skills/qrspi/iterate-research/SKILL.md) — Deepen or correct codebase research based on user feedback using targeted sub-agents.
-- [**create-design-discussion**](./skills/qrspi/create-design-discussion/SKILL.md) — Synthesize research and ticket into architectural decisions, surfacing options and patterns for human review.
-- [**iterate-design-discussion**](./skills/qrspi/iterate-design-discussion/SKILL.md) — Refine design options and converge on an architectural decision through collaborative discussion.
-- [**create-structure-outline**](./skills/qrspi/create-structure-outline/SKILL.md) — Translate an approved design into a phased structural outline with vertical slices and verification checkpoints.
-- [**iterate-structure-outline**](./skills/qrspi/iterate-structure-outline/SKILL.md) — Adjust phase ordering, boundaries, or verification checkpoints in the structure outline.
-- [**create-plan**](./skills/qrspi/create-plan/SKILL.md) — Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria.
-- [**iterate-plan**](./skills/qrspi/iterate-plan/SKILL.md) — Surgically adjust the implementation plan when scope changes or implementation hits a mismatch.
-- [**create-worktree**](./skills/qrspi/create-worktree/SKILL.md) — Create an isolated git worktree and launch an implementation session from an approved plan.
-- [**setup-qrspi**](./skills/qrspi/setup-qrspi/SKILL.md) — Set up the local `thoughts/` workspace and ignore it from git.
+- [**qrspi-create-research-questions**](./skills/qrspi/qrspi-create-research-questions/SKILL.md) — Analyze a ticket to generate targeted research questions before any codebase investigation begins.
+- [**qrspi-iterate-research-questions**](./skills/qrspi/qrspi-iterate-research-questions/SKILL.md) — Refine research questions by adding, removing, or reframing them based on user feedback.
+- [**qrspi-create-research**](./skills/qrspi/qrspi-create-research/SKILL.md) — Document codebase as-is using parallel sub-agents, guided only by the research questions document.
+- [**qrspi-iterate-research**](./skills/qrspi/qrspi-iterate-research/SKILL.md) — Deepen or correct codebase research based on user feedback using targeted sub-agents.
+- [**qrspi-create-design-discussion**](./skills/qrspi/qrspi-create-design-discussion/SKILL.md) — Synthesize research and ticket into architectural decisions, surfacing options and patterns for human review.
+- [**qrspi-iterate-design-discussion**](./skills/qrspi/qrspi-iterate-design-discussion/SKILL.md) — Refine design options and converge on an architectural decision through collaborative discussion.
+- [**qrspi-create-structure-outline**](./skills/qrspi/qrspi-create-structure-outline/SKILL.md) — Translate an approved design into a phased structural outline with vertical slices and verification checkpoints.
+- [**qrspi-iterate-structure-outline**](./skills/qrspi/qrspi-iterate-structure-outline/SKILL.md) — Adjust phase ordering, boundaries, or verification checkpoints in the structure outline.
+- [**qrspi-create-plan**](./skills/qrspi/qrspi-create-plan/SKILL.md) — Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria.
+- [**qrspi-iterate-plan**](./skills/qrspi/qrspi-iterate-plan/SKILL.md) — Surgically adjust the implementation plan when scope changes or implementation hits a mismatch.
+- [**qrspi-create-worktree**](./skills/qrspi/qrspi-create-worktree/SKILL.md) — Create an isolated git worktree and launch an implementation session from an approved plan.
+- [**qrspi-setup**](./skills/qrspi/qrspi-setup/SKILL.md) — Set up the local `thoughts/` workspace and ignore it from git.
 
 ### Subagents (Claude Code only)
 

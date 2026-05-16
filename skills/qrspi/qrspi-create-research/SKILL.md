@@ -1,5 +1,5 @@
 ---
-name: create-research
+name: qrspi-create-research
 description: Document codebase as-is using parallel sub-agents, guided only by the research questions document.
 disable-model-invocation: true
 model: opus
@@ -163,7 +163,7 @@ Research report written to:
 
 Please review. Does this provide a complete and accurate picture of the current system?
 
-When ready, run the create-design-discussion skill with the research path.
+When ready, run the qrspi-create-design-discussion skill with the research path.
 ```
 
 Be ready to spawn follow-up agents if the user identifies gaps. Use the Edit tool to update the report.

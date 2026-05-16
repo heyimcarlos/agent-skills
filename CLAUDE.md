@@ -15,7 +15,7 @@ npx skills@latest add heyimcarlos/agent-skills
 - `skills/` — every skill lives here, bucketed by purpose:
   - `engineering/` — code-work skills (commit, debug, linear, worktree, …)
   - `productivity/` — general workflow skills (ralph, improve-claude-md)
-  - `qrspi/` — the QRSPI workflow as 11 skills (`create-*` and `iterate-*`)
+  - `qrspi/` — the QRSPI workflow as prefixed `qrspi-*` setup, create, and iterate skills
   - `misc/` — reserved bucket for rarely-used skills (currently empty)
 - `agents/` — Claude Code subagents shipped alongside the plugin (codebase + thoughts + web research roles).
 - `.claude-plugin/plugin.json` — single-plugin manifest. Listed by `vercel-labs/skills` for discovery and used by Claude Code's plugin system. The repo is registered as a single-plugin Claude marketplace via this file.
@@ -26,12 +26,12 @@ npx skills@latest add heyimcarlos/agent-skills
 
 Two composable layers, two different jobs. Don't mix them up.
 
-- **Skills** (`skills/<bucket>/<name>/SKILL.md`) — workflows with steps and exit criteria. The _how_. Most skills auto-trigger from the description; QRSPI skills set `disable-model-invocation: true` and are invoked explicitly by the user.
+- **Skills** (`skills/<bucket>/<name>/SKILL.md`) — workflows with steps and exit criteria. The _how_. Most skills auto-trigger from the description; QRSPI skills are prefixed with `qrspi-`, set `disable-model-invocation: true`, and are invoked explicitly by the user.
 - **Subagents** (`agents/<name>.md`) — research/specialist roles with a perspective and an output format. The _who_. Invoked via the `Agent` tool.
 
 Composition rule: **the user (or a skill) is the orchestrator.** Subagents do not invoke other subagents. A skill or subagent may invoke other skills.
 
-The QRSPI workflow is the canonical multi-step orchestration in this repo: each phase is its own skill (`create-research-questions`, `create-research`, `create-design-discussion`, `create-structure-outline`, `create-plan`, `create-worktree`) with `iterate-*` siblings for refinement. The user drives stage-to-stage transitions; don't build a "router" persona that picks which stage to run next.
+The QRSPI workflow is the canonical multi-step orchestration in this repo: each phase is its own skill (`qrspi-create-research-questions`, `qrspi-create-research`, `qrspi-create-design-discussion`, `qrspi-create-structure-outline`, `qrspi-create-plan`, `qrspi-create-worktree`) with `qrspi-iterate-*` siblings for refinement. The user drives stage-to-stage transitions; don't build a "router" persona that picks which stage to run next.
 
 **Claude Code interop:** the agents in `agents/` are auto-discovered as Claude Code subagents when the plugin is installed. Plugin agents silently ignore the `hooks`, `mcpServers`, and `permissionMode` frontmatter fields. Subagents cannot spawn other subagents.
 

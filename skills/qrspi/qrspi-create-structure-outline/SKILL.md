@@ -1,5 +1,5 @@
 ---
-name: create-structure-outline
+name: qrspi-create-structure-outline
 description: Translate an approved design into a phased structural outline with vertical slices and verification checkpoints.
 disable-model-invocation: true
 model: opus
@@ -31,7 +31,7 @@ When this skill is triggered:
 ### Step 1: Read and Verify Design is Approved
 
 1. Read the design document fully.
-2. Verify it has a clear approved approach (not still deciding between options). If the design still has unresolved open questions, stop and suggest running the iterate-design-discussion skill first.
+2. Verify it has a clear approved approach (not still deciding between options). If the design still has unresolved open questions, stop and suggest running the qrspi-qrspi-iterate-design-discussion skill first.
 3. Read the research document referenced in the design for file-level context.
 
 ### Step 2: Define Phases Using Vertical Slices
@@ -149,7 +149,7 @@ Phase sequence:
 
 Does the ordering and scope of each phase look right? This is the last review point before the plan gets written.
 
-Once approved, run the create-plan skill.
+Once approved, run the qrspi-create-plan skill.
 ```
 
 ## Guidelines

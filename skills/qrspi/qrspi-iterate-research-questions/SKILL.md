@@ -1,5 +1,5 @@
 ---
-name: iterate-research-questions
+name: qrspi-iterate-research-questions
 description: Refine research questions by adding, removing, or reframing them based on user feedback.
 disable-model-invocation: true
 model: opus
@@ -48,7 +48,7 @@ After updating the markdown, check whether a sibling `.html` file exists at the 
 
 - **Sibling `.html` exists**: Refresh it to match the new markdown. Prefer surgical Edit on the affected slides (added/removed/reframed questions). Rewrite the full file only if changes are widespread. Append `<aside class="meta">Updated YYYY-MM-DD: [reason]</aside>` to the title slide.
 - **No sibling, no flag**: Skip — markdown stays canonical.
-- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-research-questions`'s Step 5a.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `qrspi-create-research-questions`'s Step 5a.
 
 ### Step 4: Present the Updated Questions
 

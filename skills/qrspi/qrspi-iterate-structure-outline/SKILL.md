@@ -1,5 +1,5 @@
 ---
-name: iterate-structure-outline
+name: qrspi-iterate-structure-outline
 description: Adjust phase ordering, boundaries, or verification checkpoints in the structure outline.
 disable-model-invocation: true
 model: opus
@@ -58,7 +58,7 @@ After updating the markdown, check whether a sibling `.html` file exists at the 
 
 - **Sibling `.html` exists**: Refresh the phase overview table AND the SVG timeline — both must reflect the new ordering / counts. Add, remove, or split per-phase slides as needed. Update the "What We're NOT Doing" slide if scope changed. Append an "Updated" `<aside class="meta">` to the title slide.
 - **No sibling, no flag**: Skip — markdown stays canonical.
-- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-structure-outline`'s Step 4b.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `qrspi-create-structure-outline`'s Step 4b.
 
 ### Step 4: Present Changes
 
@@ -74,11 +74,11 @@ Phase sequence is now:
 
 Does this look right, or further adjustments needed?
 
-When approved, run the create-plan skill.
+When approved, run the qrspi-create-plan skill.
 ```
 
 ## Guidelines
 
 - Preserve the vertical slice principle even when the user pushes back. Explain why if needed.
 - Don't rewrite the entire document — surgical edits only.
-- If the change is architectural (not just reordering), suggest going back to the iterate-design-discussion skill.
+- If the change is architectural (not just reordering), suggest going back to the qrspi-iterate-design-discussion skill.

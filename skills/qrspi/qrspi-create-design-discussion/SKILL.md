@@ -1,5 +1,5 @@
 ---
-name: create-design-discussion
+name: qrspi-create-design-discussion
 description: Synthesize research and ticket into architectural decisions, surfacing options and patterns for human review.
 disable-model-invocation: true
 model: opus
@@ -176,7 +176,7 @@ Key decisions needed:
 
 Please review the options and share your thinking. This is the most important review point — design decisions here shape everything downstream.
 
-Once we align, run the create-structure-outline skill.
+Once we align, run the qrspi-create-structure-outline skill.
 ```
 
 ## Guidelines
@@ -184,5 +184,5 @@ Once we align, run the create-structure-outline skill.
 - This is a discussion, not a decree. Present options and reasoning; the human decides.
 - Be concrete: name files, interfaces, and migration paths. Abstract design docs are not useful.
 - Surface pattern conflicts explicitly. If two parts of the codebase do the same thing differently, the human needs to know.
-- If the research is insufficient to propose good options, say so and suggest running the iterate-research skill first.
+- If the research is insufficient to propose good options, say so and suggest running the qrspi-iterate-research skill first.
 - Keep the design document under ~200 lines. If it's longer, the scope is too big — suggest splitting.

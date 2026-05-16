@@ -1,5 +1,5 @@
 ---
-name: iterate-plan
+name: qrspi-iterate-plan
 description: Surgically adjust the implementation plan when scope changes or implementation hits a mismatch.
 disable-model-invocation: true
 model: opus
@@ -57,7 +57,7 @@ After updating the markdown, check whether a sibling `.html` file exists at the 
 
 - **Sibling `.html` exists**: Refresh affected step slides and phase checkpoints. Critical: **sync checkbox state** — for each step, copy the markdown's `- [ ]`/`- [x]` into the corresponding HTML `<input type="checkbox" disabled>` (set `checked` for `[x]`, unset for `[ ]`). Never uncheck completed steps. Append `<aside class="meta">Updated YYYY-MM-DD: [reason]</aside>` to the title slide so the banner matches the markdown's "Updated" note.
 - **No sibling, no flag**: Skip — markdown stays canonical.
-- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-plan`'s Step 4b, with checkboxes already reflecting the current `[x]` state.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `qrspi-create-plan`'s Step 4b, with checkboxes already reflecting the current `[x]` state.
 
 ### Step 4: Present Changes
 
@@ -74,6 +74,6 @@ The plan is ready to continue from Step [next incomplete step].
 ## Guidelines
 
 - Don't rewrite the entire plan for a single step's issue. Surgical edits only.
-- If the mismatch is fundamental (wrong architecture, missing component), suggest going back to the iterate-design-discussion or iterate-structure-outline skill rather than patching the plan.
+- If the mismatch is fundamental (wrong architecture, missing component), suggest going back to the iterate-design-discussion or qrspi-iterate-structure-outline skill rather than patching the plan.
 - If more than 3 steps need to change, that's a signal the structure outline needs updating first.
 - Completed steps are immutable history — never uncheck them.

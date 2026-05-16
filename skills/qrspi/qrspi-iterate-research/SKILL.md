@@ -1,5 +1,5 @@
 ---
-name: iterate-research
+name: qrspi-iterate-research
 description: Deepen or correct codebase research based on user feedback using targeted sub-agents.
 disable-model-invocation: true
 model: opus
@@ -51,7 +51,7 @@ After updating the markdown, check whether a sibling `.html` file exists at the 
 
 - **Sibling `.html` exists**: Refresh affected slides — file map, per-question findings, data flow diagrams, discrepancies table — to match the new markdown content. Prefer surgical Edit; rewrite the full `.html` only if many slides changed. Append an "Updated" `<aside class="meta">` to the title slide.
 - **No sibling, no flag**: Skip — markdown stays canonical.
-- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `create-research`'s Step 5b.
+- **No sibling but `--output=html` was passed**: Generate a fresh deck per the structure documented in `qrspi-create-research`'s Step 5b.
 
 ### Step 4: Present Changes
 
@@ -63,7 +63,7 @@ Updated the research document with:
 
 Are there other areas that need deeper investigation, or is the research complete?
 
-When ready, run the create-design-discussion skill.
+When ready, run the qrspi-create-design-discussion skill.
 ```
 
 ## Guidelines

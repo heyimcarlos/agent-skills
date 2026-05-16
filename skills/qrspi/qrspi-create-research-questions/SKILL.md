@@ -1,5 +1,5 @@
 ---
-name: create-research-questions
+name: qrspi-create-research-questions
 description: Analyze a ticket to generate targeted research questions before any codebase investigation begins.
 disable-model-invocation: true
 model: opus
@@ -143,7 +143,7 @@ I've generated research questions at:
 
 Please review the questions. You can:
 - Ask me to add, remove, or reframe questions
-- Run the iterate-research-questions skill with specific refinements
+- Run the qrspi-iterate-research-questions skill with specific refinements
 - Tell me if any questions leak ticket intent or contain bias
 
 Once you're satisfied, I'll mark the document as ready-for-research.
