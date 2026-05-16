@@ -1,7 +1,6 @@
 {
   "name": "agent-skills",
   "skills": [
-    "./skills/engineering/ci-commit",
     "./skills/engineering/ci-describe-pr",
     "./skills/engineering/commit",
     "./skills/engineering/create-handoff",
@@ -14,7 +13,6 @@
     "./skills/engineering/local-review",
     "./skills/engineering/resume-handoff",
     "./skills/engineering/validate-plan",
-    "./skills/engineering/worktree",
     "./skills/productivity/improve-claude-md",
     "./skills/productivity/ralph",
     "./skills/qrspi/qrspi-setup",

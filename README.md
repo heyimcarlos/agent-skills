@@ -57,8 +57,7 @@ Every doc-producing QRSPI skill (all of the above except `qrspi-create-worktree`
 
 Code-work skills — git, PRs, planning, implementation, debug.
 
-- [**commit**](./skills/engineering/commit/SKILL.md) — Create git commits with user approval and no Claude attribution.
-- [**ci-commit**](./skills/engineering/ci-commit/SKILL.md) — Create git commits for session changes with clear, atomic messages.
+- [**commit**](./skills/engineering/commit/SKILL.md) — Create conventional git commits
 - [**describe-pr**](./skills/engineering/describe-pr/SKILL.md) — Generate comprehensive PR descriptions following repository templates.
 - [**describe-pr-nt**](./skills/engineering/describe-pr-nt/SKILL.md) — `describe-pr` variant tuned for repos without templates.
 - [**ci-describe-pr**](./skills/engineering/ci-describe-pr/SKILL.md) — `describe-pr` variant for CI / non-interactive contexts.
