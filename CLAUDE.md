@@ -13,8 +13,7 @@ npx skills@latest add heyimcarlos/agent-skills
 ## Layout
 
 - `skills/` — every skill lives here, bucketed by purpose:
-  - `engineering/` — code-work skills (commit, debug, linear, worktree, …)
-  - `productivity/` — general workflow skills (ralph, improve-claude-md)
+  - `engineering/` — code-work skills (commit, debug, review-and-ship, …)
   - `qrspi/` — the QRSPI workflow as prefixed `qrspi-*` setup, create, and iterate skills
   - `misc/` — reserved bucket for rarely-used skills (currently empty)
 - `agents/` — Claude Code subagents shipped alongside the plugin (codebase + thoughts + web research roles).

@@ -26,7 +26,6 @@ Pick which skills to install and which agents to install them into. The CLI auto
 ```
 skills/
   engineering/    # daily code work — git, PRs, planning, implementation, debug
-  productivity/   # general workflow — autonomous loops, CLAUDE.md tuning
   qrspi/          # the QRSPI workflow as prefixed qrspi-* setup, create, and iterate skills
   misc/           # reserved for rarely-used skills
 agents/           # Claude Code subagents (codebase + thoughts + web research)
@@ -58,25 +57,11 @@ Every doc-producing QRSPI skill (all of the above except `qrspi-create-worktree`
 Code-work skills — git, PRs, planning, implementation, debug.
 
 - [**commit**](./skills/engineering/commit/SKILL.md) — Create conventional git commits
-- [**describe-pr**](./skills/engineering/describe-pr/SKILL.md) — Generate comprehensive PR descriptions following repository templates.
-- [**describe-pr-nt**](./skills/engineering/describe-pr-nt/SKILL.md) — `describe-pr` variant tuned for repos without templates.
-- [**ci-describe-pr**](./skills/engineering/ci-describe-pr/SKILL.md) — `describe-pr` variant for CI / non-interactive contexts.
-- [**linear**](./skills/engineering/linear/SKILL.md) — Manage Linear tickets — create, update, comment, and follow workflow patterns.
 - [**debug**](./skills/engineering/debug/SKILL.md) — Debug issues by investigating logs, database state, and git history.
-- [**worktree**](./skills/engineering/worktree/SKILL.md) — Create a worktree and launch an implementation session for a plan.
-- [**local-review**](./skills/engineering/local-review/SKILL.md) — Set up a worktree for reviewing a colleague's branch.
-- [**create-handoff**](./skills/engineering/create-handoff/SKILL.md) — Create a handoff document for transferring work to another session.
-- [**resume-handoff**](./skills/engineering/resume-handoff/SKILL.md) — Resume work from a handoff document with context analysis and validation.
-- [**founder-mode**](./skills/engineering/founder-mode/SKILL.md) — Create a Linear ticket and PR for experimental features after implementation.
-- [**implement-plan**](./skills/engineering/implement-plan/SKILL.md) — Implement technical plans from `thoughts/shared/plans` with verification.
-- [**validate-plan**](./skills/engineering/validate-plan/SKILL.md) — Validate implementation against the plan, verify success criteria, identify issues.
-
-### Productivity
-
-General workflow tools, not code-specific.
-
-- [**ralph**](./skills/productivity/ralph/SKILL.md) — Generate a ralph loop for any project — bash loop, prompt, and task tracker so an agent can autonomously iterate on research, specs, or implementation.
-- [**improve-claude-md**](./skills/productivity/improve-claude-md/SKILL.md) — Improve a CLAUDE.md file using `<important if>` blocks for instruction adherence.
+- [**deslop**](./skills/engineering/deslop/SKILL.md) — Remove AI-generated code slop and clean up code style.
+- [**get-pr-comments**](./skills/engineering/get-pr-comments/SKILL.md) — Fetch and summarize review comments from the active pull request.
+- [**review-and-ship**](./skills/engineering/review-and-ship/SKILL.md) — Review the current branch for bugs, intent fit, and test coverage; run or write tests; commit focused work; open or update a PR.
+- [**thermo-nuclear-code-quality-review**](./skills/engineering/thermo-nuclear-code-quality-review/SKILL.md) — Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth.
 
 ### QRSPI
 
