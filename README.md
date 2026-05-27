@@ -56,7 +56,7 @@ Every doc-producing QRSPI skill (all of the above except `qrspi-create-worktree`
 
 Code-work skills — git, PRs, planning, implementation, debug.
 
-- [**commit**](./skills/engineering/commit/SKILL.md) — Create conventional git commits
+- [**commit**](./skills/engineering/commit/SKILL.md) — Create focused git commits with user approval
 - [**debug**](./skills/engineering/debug/SKILL.md) — Debug issues by investigating logs, database state, and git history.
 - [**deslop**](./skills/engineering/deslop/SKILL.md) — Remove AI-generated code slop and clean up code style.
 - [**get-pr-comments**](./skills/engineering/get-pr-comments/SKILL.md) — Fetch and summarize review comments from the active pull request.
