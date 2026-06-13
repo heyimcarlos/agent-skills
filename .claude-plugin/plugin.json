@@ -3,6 +3,7 @@
   "skills": [
     "./skills/engineering/commit",
     "./skills/engineering/debug",
+    "./skills/engineering/defragance",
     "./skills/engineering/deslop",
     "./skills/engineering/find-comparables",
     "./skills/engineering/get-pr-comments",

@@ -58,6 +58,7 @@ Code-work skills — git, PRs, planning, implementation, debug.
 
 - [**commit**](./skills/engineering/commit/SKILL.md) — Create focused git commits with user approval
 - [**debug**](./skills/engineering/debug/SKILL.md) — Debug issues by investigating logs, database state, and git history.
+- [**defragance**](./skills/engineering/defragance/SKILL.md) — Distill the taste, idioms, and operating habits of strong comparables into project guidance.
 - [**deslop**](./skills/engineering/deslop/SKILL.md) — Remove AI-generated code slop and clean up code style.
 - [**find-comparables**](./skills/engineering/find-comparables/SKILL.md) — Research mature comparable repositories, language standards, and books to extract best practices for a project or rewrite.
 - [**get-pr-comments**](./skills/engineering/get-pr-comments/SKILL.md) — Fetch and summarize review comments from the active pull request.
