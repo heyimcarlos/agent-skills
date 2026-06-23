@@ -65,6 +65,12 @@ Code-work skills — git, PRs, planning, implementation, debug.
 - [**review-and-ship**](./skills/engineering/review-and-ship/SKILL.md) — Review the current branch for bugs, intent fit, and test coverage; run or write tests; commit focused work; open or update a PR.
 - [**thermo-nuclear-code-quality-review**](./skills/engineering/thermo-nuclear-code-quality-review/SKILL.md) — Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth.
 
+### Misc
+
+Rarely-used skills for external tools and specialized workflows.
+
+- [**hermes-tweet**](./skills/misc/hermes-tweet/SKILL.md) - Use Hermes Tweet with Hermes Agent for X/Twitter research, social listening, and approval-gated publishing.
+
 ### QRSPI
 
 The Question → Research → Spec → Plan → Implement workflow as explicit skills.
