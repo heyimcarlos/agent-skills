@@ -63,6 +63,7 @@ Code-work skills — git, PRs, planning, implementation, debug.
 - [**find-comparables**](./skills/engineering/find-comparables/SKILL.md) — Research mature comparable repositories, language standards, and books to extract best practices for a project or rewrite.
 - [**get-pr-comments**](./skills/engineering/get-pr-comments/SKILL.md) — Fetch and summarize review comments from the active pull request.
 - [**review-and-ship**](./skills/engineering/review-and-ship/SKILL.md) — Review the current branch for bugs, intent fit, and test coverage; run or write tests; commit focused work; open or update a PR.
+- [**systems-lab-ui**](./skills/engineering/systems-lab-ui/SKILL.md) — Build interactive operational canvases for architecture, workflows, queues, agents, delivery, and load.
 - [**thermo-nuclear-code-quality-review**](./skills/engineering/thermo-nuclear-code-quality-review/SKILL.md) — Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth.
 
 ### QRSPI
