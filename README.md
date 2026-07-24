@@ -1,4 +1,4 @@
-# agent-skills
+# agent skills
 
 Skills and subagents for AI coding agents — one source of truth, installed natively in Claude Code, Gemini CLI, OpenAI Codex CLI, and 50+ other agent CLIs through [`vercel-labs/skills`](https://github.com/vercel-labs/skills).
 
