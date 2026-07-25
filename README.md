@@ -66,6 +66,12 @@ Code-work skills — git, PRs, planning, implementation, debug.
 - [**systems-lab-ui**](./skills/engineering/systems-lab-ui/SKILL.md) — Build interactive operational canvases for architecture, workflows, queues, agents, delivery, and load.
 - [**thermo-nuclear-code-quality-review**](./skills/engineering/thermo-nuclear-code-quality-review/SKILL.md) — Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth.
 
+### Misc
+
+Rarely-used skills for external tools and specialized workflows.
+
+- [**hermes-tweet**](./skills/misc/hermes-tweet/SKILL.md) - Use Hermes Tweet with Hermes Agent for X/Twitter research, social listening, and approval-gated publishing.
+
 ### QRSPI
 
 The Question → Research → Spec → Plan → Implement workflow as explicit skills.
