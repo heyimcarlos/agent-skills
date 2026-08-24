@@ -63,9 +63,6 @@ npx skills@latest add heyimcarlos/agent-skills
 # Matt Pocock's engineering and productivity skills
 npx skills@latest add mattpocock/skills
 
-# Effect v4 skill
-npx skills@latest add kitlangton/skills --skill effect
-
 # HumanLayer's visual explanation skill
 npx skills@latest add humanlayer/skills --skill show-me
 ```
@@ -82,6 +79,7 @@ These skills ship from this repository. "Global" means the skill was also presen
 | [`debug`](./skills/engineering/debug/SKILL.md) | Engineering | No |
 | [`defragance`](./skills/engineering/defragance/SKILL.md) | Engineering | No |
 | [`deslop`](./skills/engineering/deslop/SKILL.md) | Engineering | Yes |
+| [`effect`](./skills/engineering/effect/SKILL.md) | Engineering | Yes |
 | [`find-comparables`](./skills/engineering/find-comparables/SKILL.md) | Engineering | No |
 | [`get-pr-comments`](./skills/engineering/get-pr-comments/SKILL.md) | Engineering | No |
 | [`review-and-ship`](./skills/engineering/review-and-ship/SKILL.md) | Engineering | No |
@@ -102,7 +100,7 @@ These skills ship from this repository. "Global" means the skill was also presen
 
 ### Global skills maintained elsewhere
 
-These 53 skills are installed in `~/.agents/skills` but owned by another repository. Keeping their source here would create stale forks, so this repository records where they come from instead.
+These 52 skills are installed in `~/.agents/skills` but owned by another repository. Keeping their source here would create stale forks, so this repository records where they come from instead.
 
 | Skill | Install source |
 |---|---|
@@ -114,7 +112,6 @@ These 53 skills are installed in `~/.agents/skills` but owned by another reposit
 | `codebase-design` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) |
 | `diagnosing-bugs` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) |
 | `domain-modeling` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) |
-| `effect` | [`kitlangton/skills`](https://github.com/kitlangton/skills/tree/main/skills/effect) |
 | `grill-me` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me) |
 | `grill-with-docs` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) |
 | `grilling` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) |

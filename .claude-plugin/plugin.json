@@ -5,6 +5,7 @@
     "./skills/engineering/debug",
     "./skills/engineering/defragance",
     "./skills/engineering/deslop",
+    "./skills/engineering/effect",
     "./skills/engineering/find-comparables",
     "./skills/engineering/get-pr-comments",
     "./skills/engineering/review-and-ship",
