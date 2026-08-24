@@ -1,0 +1,5 @@
+interface:
+  display_name: "Why"
+  short_description: "Investigate evidence behind code decisions"
+policy:
+  allow_implicit_invocation: true

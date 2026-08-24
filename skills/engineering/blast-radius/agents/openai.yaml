@@ -1,0 +1,5 @@
+interface:
+  display_name: "Blast Radius"
+  short_description: "Find downstream breakage and prove safety"
+policy:
+  allow_implicit_invocation: false

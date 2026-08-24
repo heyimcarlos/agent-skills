@@ -1,0 +1,5 @@
+interface:
+  display_name: "Separate Shared State"
+  short_description: "Separate concurrent writes before locking"
+policy:
+  allow_implicit_invocation: false

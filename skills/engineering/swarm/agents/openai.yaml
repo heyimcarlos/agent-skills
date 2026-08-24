@@ -1,0 +1,5 @@
+interface:
+  display_name: "Swarm"
+  short_description: "Fan out parallel slices or race arms"
+policy:
+  allow_implicit_invocation: false

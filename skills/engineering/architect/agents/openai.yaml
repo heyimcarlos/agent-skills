@@ -1,0 +1,5 @@
+interface:
+  display_name: "Architect"
+  short_description: "Design the shape before implementing it"
+policy:
+  allow_implicit_invocation: false

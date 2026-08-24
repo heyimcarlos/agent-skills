@@ -1,0 +1,5 @@
+interface:
+  display_name: "Arena"
+  short_description: "Generate, judge, and merge parallel candidates"
+policy:
+  allow_implicit_invocation: false

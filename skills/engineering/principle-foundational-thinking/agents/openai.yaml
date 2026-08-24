@@ -1,0 +1,5 @@
+interface:
+  display_name: "Foundational Thinking"
+  short_description: "Choose foundations before implementation details"
+policy:
+  allow_implicit_invocation: false

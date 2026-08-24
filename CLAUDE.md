@@ -15,7 +15,7 @@ npx skills@latest add heyimcarlos/agent-skills
 - `skills/` — every skill lives here, bucketed by purpose:
   - `engineering/` — code-work skills (commit, debug, review-and-ship, …)
   - `qrspi/` — the QRSPI workflow as prefixed `qrspi-*` setup, create, and iterate skills
-  - `misc/` — reserved bucket for rarely-used skills (currently empty)
+  - `misc/` — cross-cutting productivity and writing skills
 - `agents/` — Claude Code subagents shipped alongside the plugin (codebase + thoughts + web research roles).
 - `.claude-plugin/plugin.json` — single-plugin manifest. Listed by `vercel-labs/skills` for discovery and used by Claude Code's plugin system. The repo is registered as a single-plugin Claude marketplace via this file.
 - `.claude/settings.json` — reference snapshot of the maintainer's Claude Code settings. The plugin handles all installable content; this is just a personal snapshot.

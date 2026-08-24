@@ -27,7 +27,7 @@ Pick which skills to install and which agents to install them into. The CLI auto
 skills/
   engineering/    # daily code work — git, PRs, planning, implementation, debug
   qrspi/          # the QRSPI workflow as prefixed qrspi-* setup, create, and iterate skills
-  misc/           # reserved for rarely-used skills
+  misc/           # cross-cutting productivity and writing skills
 agents/           # Claude Code subagents (codebase + thoughts + web research)
 .claude-plugin/
   plugin.json     # single-plugin manifest read by `npx skills` and Claude Code
@@ -54,20 +54,13 @@ Every doc-producing QRSPI skill (all of the above except `qrspi-create-worktree`
 
 This inventory compares the repository with the shared global skill directory at `~/.agents/skills`, Codex's built-in system skills, and the plugin-managed skills available in Codex. It was last checked on 2026-08-24.
 
-### Install sources
+### Install
 
 ```bash
-# Skills maintained in this repository
 npx skills@latest add heyimcarlos/agent-skills
-
-# Matt Pocock's engineering and productivity skills
-npx skills@latest add mattpocock/skills
-
-# HumanLayer's visual explanation skill
-npx skills@latest add humanlayer/skills --skill show-me
 ```
 
-The pstack skills come from Cursor's [`pstack`](https://github.com/cursor/plugins/tree/main/pstack) plugin. Install the plugin in Cursor with `/add-plugin pstack`. Codex-managed skills come from the named plugin and should be installed or updated through Codex's Plugins screen, not copied from `~/.codex/plugins/cache`.
+All shared global skills with external lineage differed from their current upstream packages and now ship here as Codex-maintained forks. The [upstream audit](./UPSTREAMS.md) records the comparison commits, per-skill results, and required license notices.
 
 ### Skills maintained here
 
@@ -75,16 +68,68 @@ These skills ship from this repository. "Global" means the skill was also presen
 
 | Skill | Group | Global |
 |---|---|---|
+| [`architect`](./skills/engineering/architect/SKILL.md) | Engineering | Yes |
+| [`arena`](./skills/engineering/arena/SKILL.md) | Engineering | Yes |
+| [`blast-radius`](./skills/engineering/blast-radius/SKILL.md) | Engineering | Yes |
+| [`code-review`](./skills/engineering/code-review/SKILL.md) | Engineering | Yes |
+| [`codebase-design`](./skills/engineering/codebase-design/SKILL.md) | Engineering | Yes |
 | [`commit`](./skills/engineering/commit/SKILL.md) | Engineering | No |
 | [`debug`](./skills/engineering/debug/SKILL.md) | Engineering | No |
 | [`defragance`](./skills/engineering/defragance/SKILL.md) | Engineering | No |
 | [`deslop`](./skills/engineering/deslop/SKILL.md) | Engineering | Yes |
+| [`diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md) | Engineering | Yes |
+| [`domain-modeling`](./skills/engineering/domain-modeling/SKILL.md) | Engineering | Yes |
 | [`effect`](./skills/engineering/effect/SKILL.md) | Engineering | Yes |
 | [`find-comparables`](./skills/engineering/find-comparables/SKILL.md) | Engineering | No |
 | [`get-pr-comments`](./skills/engineering/get-pr-comments/SKILL.md) | Engineering | No |
+| [`grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) | Engineering | Yes |
+| [`how`](./skills/engineering/how/SKILL.md) | Engineering | Yes |
+| [`implement`](./skills/engineering/implement/SKILL.md) | Engineering | Yes |
+| [`improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md) | Engineering | Yes |
+| [`interrogate`](./skills/engineering/interrogate/SKILL.md) | Engineering | Yes |
+| [`principle-boundary-discipline`](./skills/engineering/principle-boundary-discipline/SKILL.md) | Engineering | Yes |
+| [`principle-encode-lessons-in-structure`](./skills/engineering/principle-encode-lessons-in-structure/SKILL.md) | Engineering | Yes |
+| [`principle-exhaust-the-design-space`](./skills/engineering/principle-exhaust-the-design-space/SKILL.md) | Engineering | Yes |
+| [`principle-fix-root-causes`](./skills/engineering/principle-fix-root-causes/SKILL.md) | Engineering | Yes |
+| [`principle-foundational-thinking`](./skills/engineering/principle-foundational-thinking/SKILL.md) | Engineering | Yes |
+| [`principle-guard-the-context-window`](./skills/engineering/principle-guard-the-context-window/SKILL.md) | Engineering | Yes |
+| [`principle-laziness-protocol`](./skills/engineering/principle-laziness-protocol/SKILL.md) | Engineering | Yes |
+| [`principle-make-operations-idempotent`](./skills/engineering/principle-make-operations-idempotent/SKILL.md) | Engineering | Yes |
+| [`principle-minimize-reader-load`](./skills/engineering/principle-minimize-reader-load/SKILL.md) | Engineering | Yes |
+| [`principle-outcome-oriented-execution`](./skills/engineering/principle-outcome-oriented-execution/SKILL.md) | Engineering | Yes |
+| [`principle-prove-it-works`](./skills/engineering/principle-prove-it-works/SKILL.md) | Engineering | Yes |
+| [`principle-redesign-from-first-principles`](./skills/engineering/principle-redesign-from-first-principles/SKILL.md) | Engineering | Yes |
+| [`principle-separate-before-serializing-shared-state`](./skills/engineering/principle-separate-before-serializing-shared-state/SKILL.md) | Engineering | Yes |
+| [`principle-sequence-verifiable-units`](./skills/engineering/principle-sequence-verifiable-units/SKILL.md) | Engineering | Yes |
+| [`principle-subtract-before-you-add`](./skills/engineering/principle-subtract-before-you-add/SKILL.md) | Engineering | Yes |
+| [`prototype`](./skills/engineering/prototype/SKILL.md) | Engineering | Yes |
+| [`research`](./skills/engineering/research/SKILL.md) | Engineering | Yes |
+| [`resolving-merge-conflicts`](./skills/engineering/resolving-merge-conflicts/SKILL.md) | Engineering | Yes |
 | [`review-and-ship`](./skills/engineering/review-and-ship/SKILL.md) | Engineering | No |
+| [`setup-matt-pocock-skills`](./skills/engineering/setup-matt-pocock-skills/SKILL.md) | Engineering | Yes |
+| [`swarm`](./skills/engineering/swarm/SKILL.md) | Engineering | Yes |
 | [`systems-lab-ui`](./skills/engineering/systems-lab-ui/SKILL.md) | Engineering | Yes |
+| [`tdd`](./skills/engineering/tdd/SKILL.md) | Engineering | Yes |
 | [`thermo-nuclear-code-quality-review`](./skills/engineering/thermo-nuclear-code-quality-review/SKILL.md) | Engineering | Yes |
+| [`to-spec`](./skills/engineering/to-spec/SKILL.md) | Engineering | Yes |
+| [`to-tickets`](./skills/engineering/to-tickets/SKILL.md) | Engineering | Yes |
+| [`triage`](./skills/engineering/triage/SKILL.md) | Engineering | Yes |
+| [`typescript-best-practices`](./skills/engineering/typescript-best-practices/SKILL.md) | Engineering | Yes |
+| [`wayfinder`](./skills/engineering/wayfinder/SKILL.md) | Engineering | Yes |
+| [`why`](./skills/engineering/why/SKILL.md) | Engineering | Yes |
+| [`wizard`](./skills/engineering/wizard/SKILL.md) | Engineering | Yes |
+| [`bro`](./skills/misc/bro/SKILL.md) | Misc | Yes |
+| [`grill-me`](./skills/misc/grill-me/SKILL.md) | Misc | Yes |
+| [`grilling`](./skills/misc/grilling/SKILL.md) | Misc | Yes |
+| [`handoff`](./skills/misc/handoff/SKILL.md) | Misc | Yes |
+| [`recall`](./skills/misc/recall/SKILL.md) | Misc | Yes |
+| [`show-me`](./skills/misc/show-me/SKILL.md) | Misc | Yes |
+| [`show-me-your-work`](./skills/misc/show-me-your-work/SKILL.md) | Misc | Yes |
+| [`teach`](./skills/misc/teach/SKILL.md) | Misc | Yes |
+| [`technical-writing`](./skills/misc/technical-writing/SKILL.md) | Misc | Yes |
+| [`to-questionnaire`](./skills/misc/to-questionnaire/SKILL.md) | Misc | Yes |
+| [`unslop`](./skills/misc/unslop/SKILL.md) | Misc | Yes |
+| [`writing-for-agents`](./skills/misc/writing-for-agents/SKILL.md) | Misc | Yes |
 | [`qrspi-create-design-discussion`](./skills/qrspi/qrspi-create-design-discussion/SKILL.md) | QRSPI | No |
 | [`qrspi-create-plan`](./skills/qrspi/qrspi-create-plan/SKILL.md) | QRSPI | No |
 | [`qrspi-create-research`](./skills/qrspi/qrspi-create-research/SKILL.md) | QRSPI | No |
@@ -97,65 +142,6 @@ These skills ship from this repository. "Global" means the skill was also presen
 | [`qrspi-iterate-research-questions`](./skills/qrspi/qrspi-iterate-research-questions/SKILL.md) | QRSPI | No |
 | [`qrspi-iterate-structure-outline`](./skills/qrspi/qrspi-iterate-structure-outline/SKILL.md) | QRSPI | No |
 | [`qrspi-setup`](./skills/qrspi/qrspi-setup/SKILL.md) | QRSPI | No |
-
-### Global skills maintained elsewhere
-
-These 52 skills are installed in `~/.agents/skills` but owned by another repository. Keeping their source here would create stale forks, so this repository records where they come from instead.
-
-| Skill | Install source |
-|---|---|
-| `architect` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/architect) |
-| `arena` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/arena) |
-| `blast-radius` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/blast-radius) |
-| `bro` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/bro) |
-| `code-review` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) |
-| `codebase-design` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) |
-| `diagnosing-bugs` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) |
-| `domain-modeling` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) |
-| `grill-me` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me) |
-| `grill-with-docs` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) |
-| `grilling` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) |
-| `handoff` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) |
-| `how` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/how) |
-| `implement` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/implement) |
-| `improve-codebase-architecture` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) |
-| `interrogate` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/interrogate) |
-| `principle-boundary-discipline` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-boundary-discipline) |
-| `principle-encode-lessons-in-structure` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-encode-lessons-in-structure) |
-| `principle-exhaust-the-design-space` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-exhaust-the-design-space) |
-| `principle-fix-root-causes` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-fix-root-causes) |
-| `principle-foundational-thinking` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-foundational-thinking) |
-| `principle-guard-the-context-window` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-guard-the-context-window) |
-| `principle-laziness-protocol` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-laziness-protocol) |
-| `principle-make-operations-idempotent` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-make-operations-idempotent) |
-| `principle-minimize-reader-load` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-minimize-reader-load) |
-| `principle-outcome-oriented-execution` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-outcome-oriented-execution) |
-| `principle-prove-it-works` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-prove-it-works) |
-| `principle-redesign-from-first-principles` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-redesign-from-first-principles) |
-| `principle-separate-before-serializing-shared-state` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-separate-before-serializing-shared-state) |
-| `principle-sequence-verifiable-units` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-sequence-verifiable-units) |
-| `principle-subtract-before-you-add` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-subtract-before-you-add) |
-| `prototype` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
-| `recall` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/recall) |
-| `research` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/research) |
-| `resolving-merge-conflicts` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/resolving-merge-conflicts) |
-| `setup-matt-pocock-skills` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills) |
-| `show-me` | [`humanlayer/skills`](https://github.com/humanlayer/skills/tree/main/skills/show-me) |
-| `show-me-your-work` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/show-me-your-work) |
-| `swarm` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/swarm) |
-| `tdd` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd) |
-| `teach` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
-| `technical-writing` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/technical-writing) |
-| `to-questionnaire` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/to-questionnaire) |
-| `to-spec` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec) |
-| `to-tickets` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets) |
-| `triage` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/triage) |
-| `typescript-best-practices` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/typescript-best-practices) |
-| `unslop` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop) |
-| `wayfinder` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/wayfinder) |
-| `why` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/why) |
-| `wizard` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/wizard) |
-| `writing-for-agents` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) |
 
 ### Codex-managed skills
 

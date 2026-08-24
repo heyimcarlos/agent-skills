@@ -1,0 +1,5 @@
+interface:
+  display_name: "Sequence Verifiable Units"
+  short_description: "Deliver work in independently verified units"
+policy:
+  allow_implicit_invocation: false
