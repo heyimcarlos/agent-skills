@@ -1,0 +1,5 @@
+interface:
+  display_name: "Systems Lab UI"
+  short_description: "Build an interactive operational system canvas"
+policy:
+  allow_implicit_invocation: false

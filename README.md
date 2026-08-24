@@ -50,38 +50,150 @@ QRSPI skills use a `qrspi-` name prefix so they are easy to find and select duri
 
 Every doc-producing QRSPI skill (all of the above except `qrspi-create-worktree`) accepts an optional `--output=html` flag. When present, the skill emits a reveal.js slide deck alongside the canonical markdown — color, SVG diagrams, annotated code, comparison tables. Iterate skills detect the sibling `.html` and refresh both. See [`skills/qrspi/HTML-OUTPUT.md`](./skills/qrspi/HTML-OUTPUT.md) for the conventions and per-phase slide structures.
 
-## Reference
+## Complete skill inventory
 
-### Engineering
+This inventory compares the repository with the shared global skill directory at `~/.agents/skills`, Codex's built-in system skills, and the plugin-managed skills available in Codex. It was last checked on 2026-08-24.
 
-Code-work skills — git, PRs, planning, implementation, debug.
+### Install sources
 
-- [**commit**](./skills/engineering/commit/SKILL.md) — Create focused git commits with user approval
-- [**debug**](./skills/engineering/debug/SKILL.md) — Debug issues by investigating logs, database state, and git history.
-- [**defragance**](./skills/engineering/defragance/SKILL.md) — Distill the taste, idioms, and operating habits of strong comparables into project guidance.
-- [**deslop**](./skills/engineering/deslop/SKILL.md) — Remove AI-generated code slop and clean up code style.
-- [**find-comparables**](./skills/engineering/find-comparables/SKILL.md) — Research mature comparable repositories, language standards, and books to extract best practices for a project or rewrite.
-- [**get-pr-comments**](./skills/engineering/get-pr-comments/SKILL.md) — Fetch and summarize review comments from the active pull request.
-- [**review-and-ship**](./skills/engineering/review-and-ship/SKILL.md) — Review the current branch for bugs, intent fit, and test coverage; run or write tests; commit focused work; open or update a PR.
-- [**systems-lab-ui**](./skills/engineering/systems-lab-ui/SKILL.md) — Build interactive operational canvases for architecture, workflows, queues, agents, delivery, and load.
-- [**thermo-nuclear-code-quality-review**](./skills/engineering/thermo-nuclear-code-quality-review/SKILL.md) — Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth.
+```bash
+# Skills maintained in this repository
+npx skills@latest add heyimcarlos/agent-skills
 
-### QRSPI
+# Matt Pocock's engineering and productivity skills
+npx skills@latest add mattpocock/skills
 
-The Question → Research → Spec → Plan → Implement workflow as explicit skills.
+# Effect v4 skill
+npx skills@latest add kitlangton/skills --skill effect
 
-- [**qrspi-create-research-questions**](./skills/qrspi/qrspi-create-research-questions/SKILL.md) — Analyze a ticket to generate targeted research questions before any codebase investigation begins.
-- [**qrspi-iterate-research-questions**](./skills/qrspi/qrspi-iterate-research-questions/SKILL.md) — Refine research questions by adding, removing, or reframing them based on user feedback.
-- [**qrspi-create-research**](./skills/qrspi/qrspi-create-research/SKILL.md) — Document codebase as-is using parallel sub-agents, guided only by the research questions document.
-- [**qrspi-iterate-research**](./skills/qrspi/qrspi-iterate-research/SKILL.md) — Deepen or correct codebase research based on user feedback using targeted sub-agents.
-- [**qrspi-create-design-discussion**](./skills/qrspi/qrspi-create-design-discussion/SKILL.md) — Synthesize research and ticket into architectural decisions, surfacing options and patterns for human review.
-- [**qrspi-iterate-design-discussion**](./skills/qrspi/qrspi-iterate-design-discussion/SKILL.md) — Refine design options and converge on an architectural decision through collaborative discussion.
-- [**qrspi-create-structure-outline**](./skills/qrspi/qrspi-create-structure-outline/SKILL.md) — Translate an approved design into a phased structural outline with vertical slices and verification checkpoints.
-- [**qrspi-iterate-structure-outline**](./skills/qrspi/qrspi-iterate-structure-outline/SKILL.md) — Adjust phase ordering, boundaries, or verification checkpoints in the structure outline.
-- [**qrspi-create-plan**](./skills/qrspi/qrspi-create-plan/SKILL.md) — Convert an approved structure outline into a rigid step-by-step implementation plan with dual verification criteria.
-- [**qrspi-iterate-plan**](./skills/qrspi/qrspi-iterate-plan/SKILL.md) — Surgically adjust the implementation plan when scope changes or implementation hits a mismatch.
-- [**qrspi-create-worktree**](./skills/qrspi/qrspi-create-worktree/SKILL.md) — Create an isolated git worktree and launch an implementation session from an approved plan.
-- [**qrspi-setup**](./skills/qrspi/qrspi-setup/SKILL.md) — Set up the local `thoughts/` workspace and ignore it from git.
+# HumanLayer's visual explanation skill
+npx skills@latest add humanlayer/skills --skill show-me
+```
+
+The pstack skills come from Cursor's [`pstack`](https://github.com/cursor/plugins/tree/main/pstack) plugin. Install the plugin in Cursor with `/add-plugin pstack`. Codex-managed skills come from the named plugin and should be installed or updated through Codex's Plugins screen, not copied from `~/.codex/plugins/cache`.
+
+### Skills maintained here
+
+These skills ship from this repository. "Global" means the skill was also present in `~/.agents/skills` when this inventory was taken.
+
+| Skill | Group | Global |
+|---|---|---|
+| [`commit`](./skills/engineering/commit/SKILL.md) | Engineering | No |
+| [`debug`](./skills/engineering/debug/SKILL.md) | Engineering | No |
+| [`defragance`](./skills/engineering/defragance/SKILL.md) | Engineering | No |
+| [`deslop`](./skills/engineering/deslop/SKILL.md) | Engineering | Yes |
+| [`find-comparables`](./skills/engineering/find-comparables/SKILL.md) | Engineering | No |
+| [`get-pr-comments`](./skills/engineering/get-pr-comments/SKILL.md) | Engineering | No |
+| [`review-and-ship`](./skills/engineering/review-and-ship/SKILL.md) | Engineering | No |
+| [`systems-lab-ui`](./skills/engineering/systems-lab-ui/SKILL.md) | Engineering | Yes |
+| [`thermo-nuclear-code-quality-review`](./skills/engineering/thermo-nuclear-code-quality-review/SKILL.md) | Engineering | Yes |
+| [`qrspi-create-design-discussion`](./skills/qrspi/qrspi-create-design-discussion/SKILL.md) | QRSPI | No |
+| [`qrspi-create-plan`](./skills/qrspi/qrspi-create-plan/SKILL.md) | QRSPI | No |
+| [`qrspi-create-research`](./skills/qrspi/qrspi-create-research/SKILL.md) | QRSPI | No |
+| [`qrspi-create-research-questions`](./skills/qrspi/qrspi-create-research-questions/SKILL.md) | QRSPI | No |
+| [`qrspi-create-structure-outline`](./skills/qrspi/qrspi-create-structure-outline/SKILL.md) | QRSPI | No |
+| [`qrspi-create-worktree`](./skills/qrspi/qrspi-create-worktree/SKILL.md) | QRSPI | No |
+| [`qrspi-iterate-design-discussion`](./skills/qrspi/qrspi-iterate-design-discussion/SKILL.md) | QRSPI | No |
+| [`qrspi-iterate-plan`](./skills/qrspi/qrspi-iterate-plan/SKILL.md) | QRSPI | No |
+| [`qrspi-iterate-research`](./skills/qrspi/qrspi-iterate-research/SKILL.md) | QRSPI | No |
+| [`qrspi-iterate-research-questions`](./skills/qrspi/qrspi-iterate-research-questions/SKILL.md) | QRSPI | No |
+| [`qrspi-iterate-structure-outline`](./skills/qrspi/qrspi-iterate-structure-outline/SKILL.md) | QRSPI | No |
+| [`qrspi-setup`](./skills/qrspi/qrspi-setup/SKILL.md) | QRSPI | No |
+
+### Global skills maintained elsewhere
+
+These 53 skills are installed in `~/.agents/skills` but owned by another repository. Keeping their source here would create stale forks, so this repository records where they come from instead.
+
+| Skill | Install source |
+|---|---|
+| `architect` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/architect) |
+| `arena` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/arena) |
+| `blast-radius` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/blast-radius) |
+| `bro` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/bro) |
+| `code-review` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) |
+| `codebase-design` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) |
+| `diagnosing-bugs` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) |
+| `domain-modeling` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) |
+| `effect` | [`kitlangton/skills`](https://github.com/kitlangton/skills/tree/main/skills/effect) |
+| `grill-me` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me) |
+| `grill-with-docs` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) |
+| `grilling` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) |
+| `handoff` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) |
+| `how` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/how) |
+| `implement` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/implement) |
+| `improve-codebase-architecture` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) |
+| `interrogate` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/interrogate) |
+| `principle-boundary-discipline` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-boundary-discipline) |
+| `principle-encode-lessons-in-structure` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-encode-lessons-in-structure) |
+| `principle-exhaust-the-design-space` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-exhaust-the-design-space) |
+| `principle-fix-root-causes` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-fix-root-causes) |
+| `principle-foundational-thinking` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-foundational-thinking) |
+| `principle-guard-the-context-window` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-guard-the-context-window) |
+| `principle-laziness-protocol` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-laziness-protocol) |
+| `principle-make-operations-idempotent` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-make-operations-idempotent) |
+| `principle-minimize-reader-load` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-minimize-reader-load) |
+| `principle-outcome-oriented-execution` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-outcome-oriented-execution) |
+| `principle-prove-it-works` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-prove-it-works) |
+| `principle-redesign-from-first-principles` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-redesign-from-first-principles) |
+| `principle-separate-before-serializing-shared-state` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-separate-before-serializing-shared-state) |
+| `principle-sequence-verifiable-units` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-sequence-verifiable-units) |
+| `principle-subtract-before-you-add` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-subtract-before-you-add) |
+| `prototype` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
+| `recall` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/recall) |
+| `research` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/research) |
+| `resolving-merge-conflicts` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/resolving-merge-conflicts) |
+| `setup-matt-pocock-skills` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills) |
+| `show-me` | [`humanlayer/skills`](https://github.com/humanlayer/skills/tree/main/skills/show-me) |
+| `show-me-your-work` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/show-me-your-work) |
+| `swarm` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/swarm) |
+| `tdd` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd) |
+| `teach` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
+| `technical-writing` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/technical-writing) |
+| `to-questionnaire` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/to-questionnaire) |
+| `to-spec` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec) |
+| `to-tickets` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets) |
+| `triage` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/triage) |
+| `typescript-best-practices` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/typescript-best-practices) |
+| `unslop` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop) |
+| `wayfinder` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/wayfinder) |
+| `why` | [`pstack`](https://github.com/cursor/plugins/tree/main/pstack/skills/why) |
+| `wizard` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/wizard) |
+| `writing-for-agents` | [`mattpocock/skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) |
+
+### Codex-managed skills
+
+These skills were available through Codex's built-in skill set or globally managed plugins when this inventory was taken. Codex or the named plugin owns the files and updates them as a unit.
+
+| Skill | Install from |
+|---|---|
+| `browser:control-in-app-browser` | Browser plugin |
+| `chrome:control-chrome` | Chrome plugin |
+| `cloudflare:agents-sdk` | Cloudflare plugin |
+| `cloudflare:building-ai-agent-on-cloudflare` | Cloudflare plugin |
+| `cloudflare:building-mcp-server-on-cloudflare` | Cloudflare plugin |
+| `cloudflare:cloudflare` | Cloudflare plugin |
+| `cloudflare:durable-objects` | Cloudflare plugin |
+| `cloudflare:sandbox-sdk` | Cloudflare plugin |
+| `cloudflare:web-perf` | Cloudflare plugin |
+| `cloudflare:workers-best-practices` | Cloudflare plugin |
+| `cloudflare:wrangler` | Cloudflare plugin |
+| `deep-research-work:deep-research` | Deep research plugin |
+| `documents:documents` | Documents plugin |
+| `imagegen` | Codex built-in |
+| `openai-docs` | Codex built-in |
+| `pdf:pdf` | PDF plugin |
+| `plugin-creator` | Codex built-in |
+| `plugin-management:plugin-management` | Plugin management plugin |
+| `presentations:Presentations` | Presentations plugin |
+| `review-agent` | Codex built-in |
+| `sites:sites-building` | Sites plugin |
+| `sites:sites-hosting` | Sites plugin |
+| `skill-creator` | Codex built-in |
+| `skill-installer` | Codex built-in |
+| `spreadsheets:excel-live-control` | Spreadsheets plugin |
+| `spreadsheets:Spreadsheets` | Spreadsheets plugin |
+| `template-creator:template-creator` | Template creator plugin |
+| `visualize:visualize` | Visualize plugin |
 
 ### Subagents (Claude Code only)
 
